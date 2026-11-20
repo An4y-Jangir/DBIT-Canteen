@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "inverse-primary": "#a8d700", "on-primary-fixed-variant": "#3b4d00", "surface-container-lowest": "#ffffff", "on-surface-variant": "#434933", "surface-container-highest": "#e3e3de", "surface-container": "#efeee9", "secondary": "#2d4fcf", "primary-fixed": "#c0f500", "outline-variant": "#c4caac", "primary-fixed-dim": "#a8d700", "primary": "#4f6600", "secondary-container": "#4b69ea", "on-surface": "#1b1c19", "on-background": "#1b1c19", "on-secondary-fixed-variant": "#0736ba", "surface-bright": "#faf9f4", "tertiary-container": "#edebef", "on-tertiary-container": "#6a6a6d", "surface-dim": "#dbdad5", "tertiary-fixed-dim": "#c7c6ca", "secondary-fixed-dim": "#b8c3ff", "on-primary-container": "#597300", "on-error": "#ffffff", "inverse-surface": "#30312e", "outline": "#747a60", "on-primary": "#ffffff", "surface-variant": "#e3e3de", "surface": "#faf9f4", "on-secondary-container": "#fffbff", "surface-container-high": "#e9e8e3", "background": "#faf9f4", "error-container": "#ffdad6", "tertiary": "#5e5e62", "on-tertiary-fixed-variant": "#46464a", "on-error-container": "#93000a", "tertiary-fixed": "#e3e2e6", "on-primary-fixed": "#161f00", "surface-container-low": "#f5f4ef", "on-tertiary-fixed": "#1b1b1f", "secondary-fixed": "#dde1ff", "on-secondary": "#ffffff", "error": "#ba1a1a", "surface-tint": "#4f6600", "primary-container": "#c8ff00", "on-secondary-fixed": "#001355", "inverse-on-surface": "#f2f1ec" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xl": "2rem", "gutter": "1rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-xs": "0.375rem", "space-2xs": "0.25rem", "margin": "1rem", "margin-tablet": "1.5rem", "space-md": "1rem", "margin-desktop": "2.5rem", "space-2xl": "3rem" }, "fontFamily": { "headline-lg-mobile": ["Space Grotesk"], "price-lg": ["Space Grotesk"], "token-display": ["Space Grotesk"], "body-sm": ["Inter"], "body-md": ["Inter"], "headline-xl": ["Space Grotesk"], "label-caps": ["Space Grotesk"], "token-display-mobile": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-lg": ["Inter"], "headline-xl-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "label-md": ["Inter"], "headline-sm": ["Space Grotesk"] }, "fontSize": { "headline-lg-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "price-lg": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "token-display": ["56px", { "lineHeight": "56px", "letterSpacing": "-0.05em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.04em", "fontWeight": "700" }], "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700" }], "token-display-mobile": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.04em", "fontWeight": "700" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-xl-mobile": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#faf9f4;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="Back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm uppercase text-on-surface">Order Checkout</h1></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full px-margin pt-16 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full pb-28">
+<!-- Top Session Meta Bar -->
+<div class="flex items-center justify-between mb-space-sm bg-surface-container-high p-space-xs rounded-lg shadow-sm">
+<div class="flex items-center gap-space-2xs">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="w-2 h-2 rounded-full bg-primary -ml-space-2xs"></span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Fast-Pass Express</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-lowest px-space-xs py-0.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-error">timer</span>
+<span class="font-label-caps text-label-caps text-error tracking-tight font-bold" id="session-timer">SESSION: 04:55</span>
+</div>
+</div>
+<!-- Order Snapshot Card -->
+<section class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-md mb-space-md">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Total Payable</span>
+<div class="flex items-baseline gap-space-xs mt-0.5">
+<span class="font-token-display-mobile text-token-display-mobile text-on-surface tracking-tighter">₹115.00</span>
+<span class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-1.5 py-0.5 rounded-lg shadow-sm uppercase font-bold">0% Surcharge</span>
+</div>
+</div>
+<div class="flex flex-col items-end text-right">
+<span class="font-label-caps text-label-caps text-secondary uppercase font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Prep Express
+        </span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">~6 mins</span>
+</div>
+</div>
+<!-- Items Compact Tray -->
+<div class="mt-space-sm pt-space-xs bg-surface-container-low p-space-xs rounded-lg flex flex-col gap-space-2xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-3.5 h-3.5 rounded-DEFAULT bg-surface-container-lowest flex items-center justify-center shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Cold Brew Signature</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface text-[15px]">×2</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-3.5 h-3.5 rounded-DEFAULT bg-surface-container-lowest flex items-center justify-center shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Masala Vada Pav (Crunch)</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface text-[15px]">×1</span>
+</div>
+</div>
+</section>
+<!-- Campus Student Wallet Direct Option -->
+<section class="flex flex-col mb-space-md">
+<div class="flex items-center justify-between px-space-2xs mb-space-2xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Campus Linked Balance</span>
+<span class="font-label-caps text-label-caps text-secondary font-bold">BYTE ID: #7829</span>
+</div>
+<label class="payment-card cursor-pointer flex items-center justify-between p-space-md bg-surface-container-lowest rounded-xl shadow-md transition-all" id="wallet-option" onclick="selectPaymentMethod('wallet')">
+<div class="flex items-center gap-space-sm">
+<div class="w-11 h-11 rounded-lg bg-surface-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[24px] text-on-surface">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-2xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Campus Wallet</span>
+<span class="bg-primary text-on-primary font-label-caps text-label-caps px-1 py-0.2 rounded-DEFAULT uppercase">Instant</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Available balance: <strong class="text-on-surface">₹340.00</strong></span>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center shadow-inner" id="wallet-radio">
+<div class="w-3 h-3 rounded-full bg-transparent transition-colors duration-150"></div>
+</div>
+</div>
+</label>
+</section>
+<!-- Instant UPI Apps (2x2 Grid) -->
+<section class="flex flex-col mb-space-md">
+<div class="flex items-center justify-between px-space-2xs mb-space-2xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">One-Tap UPI Routing</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">4 Active Handlers</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- FamPay (Student Pick) -->
+<div class="payment-card cursor-pointer relative flex flex-col p-space-sm bg-primary-container text-on-primary-container rounded-xl shadow-md transition-all" id="upi-fampay" onclick="selectPaymentMethod('fampay')">
+<span class="absolute -top-2 right-2 bg-on-surface text-surface-bright font-label-caps text-label-caps px-1.5 py-0.5 rounded-DEFAULT uppercase font-bold shadow-xs">Campus Favorite</span>
+<div class="flex items-center justify-between mt-1">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest flex items-center justify-center shadow-xs">
+<span class="font-headline-md text-headline-md text-on-surface">F</span>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-sm">
+<div class="w-2.5 h-2.5 rounded-full bg-on-surface"></div>
+</div>
+</div>
+<div class="mt-space-sm flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">FamPay</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Teen &amp; Student Card</span>
+</div>
+</div>
+<!-- Google Pay -->
+<div class="payment-card cursor-pointer relative flex flex-col p-space-sm bg-surface-container-lowest rounded-xl shadow-md transition-all" id="upi-gpay" onclick="selectPaymentMethod('gpay')">
+<div class="flex items-center justify-between mt-1">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shadow-xs">
+<span class="font-headline-md text-headline-md text-secondary">G</span>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center shadow-inner">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+</div>
+</div>
+<div class="mt-space-sm flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Google Pay</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Instant UPI Intent</span>
+</div>
+</div>
+<!-- PhonePe -->
+<div class="payment-card cursor-pointer relative flex flex-col p-space-sm bg-surface-container-lowest rounded-xl shadow-md transition-all" id="upi-phonepe" onclick="selectPaymentMethod('phonepe')">
+<div class="flex items-center justify-between mt-1">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shadow-xs">
+<span class="font-headline-md text-headline-md text-primary">पे</span>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center shadow-inner">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+</div>
+</div>
+<div class="mt-space-sm flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">PhonePe</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Auto Fast-Routing</span>
+</div>
+</div>
+<!-- Paytm -->
+<div class="payment-card cursor-pointer relative flex flex-col p-space-sm bg-surface-container-lowest rounded-xl shadow-md transition-all" id="upi-paytm" onclick="selectPaymentMethod('paytm')">
+<div class="flex items-center justify-between mt-1">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center shadow-xs">
+<span class="font-headline-md text-headline-md text-secondary-container">P</span>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center shadow-inner">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+</div>
+</div>
+<div class="mt-space-sm flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Paytm UPI</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Zero-Drop Flow</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Dynamic QR Code Module -->
+<section class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-md mb-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Counter Dynamic QR</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Scan from secondary phone or terminal</span>
+</div>
+<button class="px-space-xs py-1 rounded-lg bg-surface-container-high text-on-surface font-label-caps text-label-caps uppercase hover:bg-surface-container-highest transition-colors" onclick="toggleQRDetails()">
+<span id="qr-toggle-label">Hide QR</span>
+</button>
+</div>
+<div class="mt-space-xs flex flex-col items-center justify-center pt-space-xs" id="qr-container">
+<div class="relative bg-surface-container-lowest p-space-sm rounded-lg shadow-lg flex flex-col items-center">
+<!-- SVG Graphic QR representation styled to neo-brutalist spec -->
+<svg class="w-40 h-40 text-on-surface" fill="currentColor" viewbox="0 0 120 120">
+<!-- Finder Top Left -->
+<rect fill="none" height="30" rx="3" stroke="currentColor" stroke-width="7" width="30" x="10" y="10"></rect>
+<rect fill="currentColor" height="14" rx="2" width="14" x="18" y="18"></rect>
+<!-- Finder Top Right -->
+<rect fill="none" height="30" rx="3" stroke="currentColor" stroke-width="7" width="30" x="80" y="10"></rect>
+<rect fill="currentColor" height="14" rx="2" width="14" x="88" y="18"></rect>
+<!-- Finder Bottom Left -->
+<rect fill="none" height="30" rx="3" stroke="currentColor" stroke-width="7" width="30" x="10" y="80"></rect>
+<rect fill="currentColor" height="14" rx="2" width="14" x="18" y="88"></rect>
+<!-- Data Blocks -->
+<rect height="7" width="7" x="48" y="12"></rect>
+<rect height="7" width="7" x="60" y="12"></rect>
+<rect height="14" width="7" x="48" y="24"></rect>
+<rect height="7" width="14" x="60" y="32"></rect>
+<rect height="8" width="8" x="12" y="48"></rect>
+<rect height="6" width="14" x="25" y="48"></rect>
+<rect height="12" width="6" x="12" y="60"></rect>
+<rect height="12" width="12" x="24" y="62"></rect>
+<rect fill="#C8FF00" height="24" width="24" x="48" y="48"></rect>
+<rect fill="#121316" height="12" width="12" x="54" y="54"></rect>
+<rect height="8" width="12" x="80" y="48"></rect>
+<rect height="12" width="12" x="98" y="48"></rect>
+<rect height="6" width="18" x="80" y="62"></rect>
+<rect height="14" width="8" x="82" y="74"></rect>
+<rect height="6" width="14" x="48" y="80"></rect>
+<rect height="18" width="6" x="68" y="80"></rect>
+<rect height="18" width="14" x="48" y="92"></rect>
+<rect height="8" width="22" x="68" y="102"></rect>
+<rect height="18" width="14" x="96" y="92"></rect>
+</svg>
+<div class="mt-space-xs flex items-center gap-space-2xs bg-surface-container-high px-space-xs py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-on-surface tracking-widest font-mono">BYTE://UPI/REF98204</span>
+</div>
+</div>
+<span class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant text-center">Refreshes dynamically with kitchen station lane #3</span>
+</div>
+</section>
+<!-- Bottom Sticky Order Execution Sheet -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm shadow-xl">
+<div class="flex flex-col max-w-lg mx-auto gap-space-xs">
+<!-- Micro Trust Pill -->
+<div class="flex items-center justify-center gap-space-2xs">
+<span class="material-symbols-outlined text-[15px] text-primary">verified_user</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">100% Encrypted Campus Gateway • Token Lock Active</span>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary-container text-on-surface hover:brightness-105 active:scale-[0.98] py-space-sm px-space-md rounded-xl shadow-lg transition-transform flex items-center justify-between font-headline-sm text-headline-sm uppercase font-bold tracking-tight" id="pay-cta-btn" onclick="executePayment()">
+<span class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span id="cta-label">CONFIRM &amp; PAY ₹115.00</span>
+</span>
+<span class="font-headline-sm text-headline-sm">VIA FAMPAY →</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Session Countdown Simulator
+  let totalSeconds = 295;
+  const timerElement = document.getElementById('session-timer');
+  const timerInterval = setInterval(() => {
+    if (totalSeconds <= 0) {
+      clearInterval(timerInterval);
+      if (timerElement) timerElement.innerText = "SESSION EXPIRED";
+      return;
+    }
+    totalSeconds--;
+    const mins = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+    const secs = String(totalSeconds % 60).padStart(2, '0');
+    if (timerElement) timerElement.innerText = `SESSION: ${mins}:${secs}`;
+  }, 1000);
+
+  // Payment Selection Controller
+  let selectedMethod = 'fampay';
+  const methodNames = {
+    'wallet': 'CAMPUS WALLET',
+    'fampay': 'FAMPAY',
+    'gpay': 'GOOGLE PAY',
+    'phonepe': 'PHONEPE',
+    'paytm': 'PAYTM'
+  };
+
+  function selectPaymentMethod(id) {
+    selectedMethod = id;
+    const cards = ['wallet', 'fampay', 'gpay', 'phonepe', 'paytm'];
+    
+    cards.forEach(cardKey => {
+      const cardEl = document.getElementById(cardKey === 'wallet' ? 'wallet-option' : `upi-${cardKey}`);
+      if (!cardEl) return;
+
+      const isCurrent = cardKey === id;
+      if (isCurrent) {
+        cardEl.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+        cardEl.classList.add('bg-primary-container', 'text-on-primary-container');
+        
+        // Update radio or dot inside
+        const dot = cardEl.querySelector('.radio-indicator div') || document.querySelector('#wallet-radio div');
+        if (dot) dot.classList.replace('bg-transparent', 'bg-on-surface');
+      } else {
+        cardEl.classList.remove('bg-primary-container', 'text-on-primary-container');
+        cardEl.classList.add('bg-surface-container-lowest', 'text-on-surface');
+        
+        const dot = cardEl.querySelector('.radio-indicator div') || (cardKey === 'wallet' ? document.querySelector('#wallet-radio div') : null);
+        if (dot) dot.classList.replace('bg-on-surface', 'bg-transparent');
+      }
+    });
+
+    // Update Bottom CTA text
+    const ctaBtn = document.getElementById('pay-cta-btn');
+    if (ctaBtn) {
+      const suffix = methodNames[id] || 'UPI';
+      ctaBtn.innerHTML = `
+        <span class="flex items-center gap-space-xs">
+          <span class="material-symbols-outlined text-[20px]">bolt</span>
+          <span>CONFIRM & PAY ₹115.00</span>
+        </span>
+        <span class="font-headline-sm text-headline-sm">VIA ${suffix} →</span>
+      `;
+    }
+  }
+
+  // QR Module Toggle
+  function toggleQRDetails() {
+    const qr = document.getElementById('qr-container');
+    const label = document.getElementById('qr-toggle-label');
+    if (!qr || !label) return;
+    if (qr.classList.contains('hidden')) {
+      qr.classList.remove('hidden');
+      label.innerText = 'Hide QR';
+    } else {
+      qr.classList.add('hidden');
+      label.innerText = 'Show QR';
+    }
+  }
+
+  // Payment Confirmation Action
+  function executePayment() {
+    const btn = document.getElementById('pay-cta-btn');
+    if (!btn) return;
+    btn.innerHTML = `
+      <span class="flex items-center justify-center gap-space-xs w-full py-0.5">
+        <span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span>
+        <span>AUTHORIZING WITH GATEWAY...</span>
+      </span>
+    `;
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = `
+        <span class="flex items-center justify-center gap-space-xs w-full py-0.5 text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">check_circle</span>
+          <span>PAID! TOKEN #A-42 ISSUED</span>
+        </span>
+      `;
+    }, 1200);
+  }
+</script></main></body></html>

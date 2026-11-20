@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Byte Canteen - Live Order Token #A-42</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              900: '#064e3b'
+            },
+            slate: {
+              850: '#151e2e',
+              900: '#0f172a',
+              950: '#090d16'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen selection:bg-emerald-500 selection:text-white">
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/80 transition-all">
+<div class="max-w-7xl mx-auto h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+<!-- Brand Logo -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20">
+<span class="material-symbols-outlined text-[22px]">restaurant</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-display font-bold text-slate-900 tracking-tight text-lg">Byte<span class="text-emerald-600">.</span></span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60 hidden sm:inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              DBIT Kitchen Live
+            </span>
+</div>
+<span class="text-[11px] text-slate-400 font-medium block -mt-0.5">Don Bosco Institute of Technology</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-1 bg-slate-100/80 p-1 rounded-2xl text-xs font-medium text-slate-600">
+<a class="px-3.5 py-1.5 rounded-xl hover:text-slate-900 transition-colors" href="#">Menu &amp; Order</a>
+<a class="px-3.5 py-1.5 rounded-xl bg-white text-emerald-700 shadow-sm font-semibold flex items-center gap-1.5" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          Active Token #A-42
+        </a>
+<a class="px-3.5 py-1.5 rounded-xl hover:text-slate-900 transition-colors" href="#">Order History</a>
+<a class="px-3.5 py-1.5 rounded-xl hover:text-slate-900 transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px] text-slate-400">account_balance_wallet</span>
+          Wallet ₹340
+        </a>
+</nav>
+<!-- User Profile -->
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex flex-col text-right">
+<span class="text-xs font-semibold text-slate-800 leading-snug">Aarav Shah</span>
+<span class="text-[11px] text-slate-400">CS '26 • DBIT</span>
+</div>
+<img alt="Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-emerald-500/20 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLXGFFeInlQWsB58H5KTLqcrqzqqUariCONn8ZDHaGKzpykrQRR4Q53V3O8iQ47sbFLRQ7wj99v9qJkak179iwD2Yze0Iaxe8tiFFTDdL52eLLiASRjFv_qbjMSR_d0uUvJj6JPGO3vwPnkDwOUgxK-CWk9NRI_CUEQ3SHJvvluEp4jmBuNYGkkErBmVhrc3vgGEAMr0yyCYAThXb9R9Z2cJVPO0xmixvrS30-DyA3"/>
+</div>
+</div>
+</header>
+<!-- Live Dispatch Radar Banner -->
+<div class="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 text-white border-b border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs">
+<div class="flex items-center gap-2.5">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="font-display font-semibold text-emerald-400 uppercase tracking-wider text-[11px]">Live Dispatch Radar</span>
+<span class="text-slate-400 hidden sm:inline">• Kitchen Queue #09 is active</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-300 border border-slate-700/60 hidden md:inline">8m Avg Wait</span>
+</div>
+<div class="flex items-center gap-3 text-slate-400 text-[11px]">
+<span class="flex items-center gap-1.5 text-emerald-300">
+<span class="material-symbols-outlined text-[15px]">volume_up</span>
+          Audio Sync: On
+        </span>
+<span class="hidden sm:inline text-slate-600">|</span>
+<span class="hidden sm:inline">12:46:14 PM IST</span>
+</div>
+</div>
+</div>
+<!-- Main Content Layout -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+<!-- Top Grid: Hero Digital Ticket (8 cols) + Telemetry & Utility Panel (4 cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- HERO TICKET CARD (Col 1-8) -->
+<div class="lg:col-span-8 bg-slate-900 rounded-3xl border border-slate-800 text-white shadow-xl shadow-slate-950/20 overflow-hidden relative">
+<!-- Subtle Ambient Glow -->
+<div class="absolute -top-24 -left-24 w-80 h-80 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="p-6 sm:p-8 space-y-6 relative z-10">
+<!-- Top Row: Token ID + Destination Station -->
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 uppercase tracking-wide">
+                  Fast-Serve Order
+                </span>
+<span class="text-xs text-slate-400">Batch #04</span>
+</div>
+<div class="flex items-baseline gap-3">
+<h1 class="text-5xl sm:text-6xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-white tracking-tight">
+                  #A-42
+                </h1>
+<span class="text-slate-400 text-sm font-medium">DBIT-884102</span>
+</div>
+</div>
+<!-- Counter Destination Badge -->
+<div class="bg-slate-800/80 backdrop-blur border border-slate-700/60 rounded-2xl p-4 flex items-start gap-3 sm:max-w-xs shadow-sm">
+<div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">room_service</span>
+</div>
+<div>
+<span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Pickup Counter</span>
+<span class="font-display font-bold text-base text-white block">Counter #2</span>
+<span class="text-xs text-slate-400 mt-0.5 block">Hot Kitchen &amp; Quick Snacks Station</span>
+</div>
+</div>
+</div>
+<!-- Quick Metrics Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div class="bg-slate-800/50 border border-slate-750/50 rounded-2xl p-3.5">
+<span class="text-[11px] uppercase text-slate-400 font-medium tracking-wide block">Window Slot</span>
+<span class="text-lg font-display font-bold text-white mt-0.5 block">12:50 PM</span>
+<span class="text-xs text-emerald-400">Lunch Break Rush</span>
+</div>
+<div class="bg-slate-800/50 border border-slate-750/50 rounded-2xl p-3.5">
+<span class="text-[11px] uppercase text-slate-400 font-medium tracking-wide block">Time Remaining</span>
+<span class="text-lg font-display font-bold text-emerald-400 mt-0.5 block" id="countdown-timer">~ 03:42 min</span>
+<span class="text-xs text-slate-400">Grill &amp; Blender Active</span>
+</div>
+<div class="bg-slate-800/50 border border-slate-750/50 rounded-2xl p-3.5">
+<span class="text-[11px] uppercase text-slate-400 font-medium tracking-wide block">Pickup Mode</span>
+<span class="text-lg font-display font-bold text-white mt-0.5 block">Express Scan</span>
+<span class="text-xs text-slate-400">Show QR on Arrival</span>
+</div>
+</div>
+<!-- Milestone Tracker: Sleek, Minimalist Step Progression -->
+<div class="bg-slate-800/40 rounded-2xl border border-slate-750/40 p-4 sm:p-5 space-y-4">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-400 uppercase font-semibold tracking-wider text-[11px]">Live Preparation Milestones</span>
+<span class="text-emerald-400 font-medium flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                Stage 2 of 3 • In Progress
+              </span>
+</div>
+<!-- Steps Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<!-- Step 1: Completed -->
+<div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/30 border border-slate-700/40">
+<div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div>
+<span class="text-xs font-semibold text-slate-200 block">1. Confirmed</span>
+<span class="text-[11px] text-slate-400 block mt-0.5">12:42 PM via Wallet</span>
+</div>
+</div>
+<!-- Step 2: Active -->
+<div class="flex flex-col justify-between p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/30 ring-1 ring-emerald-500/20">
+<div class="flex items-start gap-2.5">
+<div class="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                    2
+                  </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-xs font-semibold text-white block">Preparing Now</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+</div>
+<span class="text-[11px] text-emerald-300/80 block mt-0.5">Hot Griddle In-Use</span>
+</div>
+</div>
+<!-- Mini Progress Bar -->
+<div class="mt-2.5 pt-1">
+<div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+<div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-1.5 rounded-full w-[68%] transition-all duration-700"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] text-slate-400 mt-1">
+<span>In the kitchen</span>
+<span class="text-emerald-400 font-semibold">68%</span>
+</div>
+</div>
+</div>
+<!-- Step 3: Upcoming -->
+<div class="flex items-start gap-3 p-3 rounded-xl bg-slate-850/40 border border-slate-800 text-slate-500">
+<div class="w-7 h-7 rounded-full bg-slate-800 text-slate-500 flex items-center justify-center shrink-0 mt-0.5 text-xs font-medium">
+                  3
+                </div>
+<div>
+<span class="text-xs font-medium text-slate-400 block">3. Ready for Pickup</span>
+<span class="text-[11px] text-slate-500 block mt-0.5">Broadcast at Counter #2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Row: Order Manifest & QR Code -->
+<div class="pt-2 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- Items Manifest -->
+<div class="w-full md:w-3/5 space-y-2.5">
+<span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Order Manifest</span>
+<div class="space-y-2">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 border border-slate-750/30 text-xs">
+<div class="flex items-center gap-2.5">
+<span class="w-3.5 h-3.5 border border-emerald-500 rounded flex items-center justify-center shrink-0 p-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+</span>
+<span class="text-slate-200 font-medium">Cold Coffee with Chocolate Crush</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[11px] text-slate-400 bg-slate-700/50 px-2 py-0.5 rounded-md">Qty: 2</span>
+<span class="font-display font-semibold text-white">₹90</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 border border-slate-750/30 text-xs">
+<div class="flex items-center gap-2.5">
+<span class="w-3.5 h-3.5 border border-emerald-500 rounded flex items-center justify-center shrink-0 p-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+</span>
+<span class="text-slate-200 font-medium">Classic Mumbai Vada Pav (Extra Chutney)</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[11px] text-slate-400 bg-slate-700/50 px-2 py-0.5 rounded-md">Qty: 1</span>
+<span class="font-display font-semibold text-white">₹25</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 text-xs text-slate-400">
+<span>Paid via Student ID #20220144</span>
+<span class="text-white font-semibold font-display">Total Paid: ₹115.00</span>
+</div>
+</div>
+<!-- Crisp QR Code Validator Frame -->
+<div class="w-full md:w-auto shrink-0 flex flex-col items-center bg-white p-3.5 rounded-2xl shadow-md text-slate-900">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Counter Scanner</span>
+<div class="w-28 h-28 bg-white p-1 rounded-lg flex items-center justify-center">
+<svg class="w-full h-full text-slate-900" fill="currentColor" viewbox="0 0 100 100">
+<rect fill="currentColor" height="30" rx="3" width="30" x="0" y="0"></rect>
+<rect fill="#ffffff" height="20" rx="1.5" width="20" x="5" y="5"></rect>
+<rect fill="currentColor" height="10" width="10" x="10" y="10"></rect>
+<rect fill="currentColor" height="30" rx="3" width="30" x="70" y="0"></rect>
+<rect fill="#ffffff" height="20" rx="1.5" width="20" x="75" y="5"></rect>
+<rect fill="currentColor" height="10" width="10" x="80" y="10"></rect>
+<rect fill="currentColor" height="30" rx="3" width="30" x="0" y="70"></rect>
+<rect fill="#ffffff" height="20" rx="1.5" width="20" x="5" y="75"></rect>
+<rect fill="currentColor" height="10" width="10" x="10" y="80"></rect>
+<rect height="6" width="6" x="36" y="4"></rect>
+<rect height="14" width="6" x="48" y="4"></rect>
+<rect height="8" width="6" x="58" y="10"></rect>
+<rect height="6" width="8" x="36" y="16"></rect>
+<rect height="10" width="6" x="12" y="36"></rect>
+<rect height="8" width="8" x="24" y="36"></rect>
+<rect height="14" width="6" x="38" y="28"></rect>
+<rect height="6" width="14" x="50" y="34"></rect>
+<rect height="8" width="8" x="70" y="36"></rect>
+<rect height="6" width="10" x="84" y="36"></rect>
+<rect height="6" width="12" x="4" y="52"></rect>
+<rect height="14" width="6" x="22" y="50"></rect>
+<rect height="8" width="8" x="34" y="48"></rect>
+<rect height="10" width="8" x="48" y="46"></rect>
+<rect height="6" width="14" x="62" y="50"></rect>
+<rect height="12" width="12" x="82" y="48"></rect>
+<rect height="14" width="6" x="36" y="62"></rect>
+<rect height="6" width="12" x="48" y="62"></rect>
+<rect height="12" width="8" x="66" y="64"></rect>
+<rect height="6" width="14" x="36" y="82"></rect>
+<rect height="16" width="6" x="56" y="78"></rect>
+<rect height="8" width="14" x="68" y="82"></rect>
+<rect height="18" width="6" x="88" y="76"></rect>
+</svg>
+</div>
+<span class="font-display font-bold text-xs tracking-wider text-slate-800 mt-1">A-42-DBIT</span>
+<span class="text-[10px] text-slate-400">Instant Redemption</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT UTILITY & TELEMETRY PANEL (Col 9-12) -->
+<div class="lg:col-span-4 space-y-4">
+<!-- Telemetry Card -->
+<div class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Kitchen Telemetry</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/60">
+<span class="material-symbols-outlined text-[13px]">tune</span> Station 2B
+            </span>
+</div>
+<div class="flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 shrink-0">
+<span class="material-symbols-outlined text-[24px]">skillet</span>
+</div>
+<div>
+<span class="text-sm font-semibold text-slate-800 block">Master Chef Ramesh</span>
+<span class="text-xs text-slate-500">Frying fresh batch #14 • Est. 40 pcs/min</span>
+</div>
+</div>
+<!-- Sensor Bars -->
+<div class="bg-slate-50 rounded-2xl p-3 space-y-2 border border-slate-100">
+<div class="flex justify-between items-center text-xs">
+<span class="text-slate-500">Griddle Temp</span>
+<span class="font-medium text-slate-800">185°C (Optimal)</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-1.5 rounded-full w-4/5"></div>
+</div>
+<div class="flex justify-between items-center text-xs pt-1">
+<span class="text-slate-500">Queue Backlog</span>
+<span class="font-medium text-slate-800">6 Tokens Ahead</span>
+</div>
+</div>
+</div>
+<!-- Handoff & Notification Controls -->
+<div class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm space-y-4">
+<div>
+<h3 class="text-sm font-semibold text-slate-800">Order Handoff &amp; Pings</h3>
+<p class="text-xs text-slate-500 mt-0.5">Need a friend to grab this between lectures? Delegate token securely.</p>
+</div>
+<!-- Notification Toggles -->
+<div class="space-y-2.5">
+<label class="flex items-center justify-between p-2.5 rounded-2xl bg-slate-50 hover:bg-slate-100/70 border border-slate-100 transition-colors cursor-pointer">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-emerald-600">chat</span>
+<div>
+<span class="text-xs font-medium text-slate-700 block">WhatsApp Notification</span>
+<span class="text-[11px] text-slate-400">Ping when token glows ready</span>
+</div>
+</div>
+<input checked="" class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 focus:ring-offset-0 cursor-pointer" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-2xl bg-slate-50 hover:bg-slate-100/70 border border-slate-100 transition-colors cursor-pointer">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-slate-500">sms</span>
+<div>
+<span class="text-xs font-medium text-slate-700 block">Instant SMS Backup</span>
+<span class="text-[11px] text-slate-400">To mobile +91 98*** 1290</span>
+</div>
+</div>
+<input class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 focus:ring-offset-0 cursor-pointer" type="checkbox"/>
+</label>
+</div>
+<!-- Rounded Full Action Button -->
+<button class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-3 px-4 rounded-full flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow active:scale-[0.99]" onclick="navigator.clipboard ? navigator.clipboard.writeText('https://bytecanteen.dbit.ac.in/token/A-42') : null; alert('Token pass link copied!');">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>Share Token with Friend</span>
+</button>
+<div class="flex items-center justify-between text-xs text-slate-500 pt-1 border-t border-slate-100">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-slate-400">support_agent</span> Need cutlery?
+            </span>
+<button class="text-emerald-600 hover:text-emerald-700 font-medium text-xs hover:underline">Add Note for Counter #2</button>
+</div>
+</div>
+<!-- Campus Green Initiative Card -->
+<div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-3xl p-4 flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-2xl bg-emerald-100/80 text-emerald-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">eco</span>
+</div>
+<div>
+<span class="text-xs font-semibold text-emerald-950 block">Bring Your Own Mug?</span>
+<span class="text-[11px] text-emerald-800 mt-0.5 block leading-normal">Show this badge at Counter #2 for ₹5 cash wallet refund.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ORDER HISTORY SECTION -->
+<div class="pt-4 space-y-4">
+<!-- Section Title & Action -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
+<div>
+<span class="text-[11px] uppercase tracking-wider text-emerald-600 font-semibold block">Saved Transactions</span>
+<h2 class="text-xl font-display font-bold text-slate-900">Order History &amp; Fast Reorder</h2>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="bg-white border border-slate-200 text-slate-600 text-xs font-medium px-3 py-1.5 rounded-xl shadow-xs">Semester 5 Activity</span>
+<a class="text-xs font-medium text-emerald-600 hover:text-emerald-700 flex items-center gap-1 hover:underline" href="#">
+            Download Invoices
+            <span class="material-symbols-outlined text-[15px]">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Modern Table Card with Subtle Lines -->
+<div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
+<!-- Table Header (Desktop) -->
+<div class="hidden md:grid grid-cols-12 gap-4 px-6 py-3.5 bg-slate-50/80 border-b border-slate-100 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+<div class="col-span-2">Token &amp; Date</div>
+<div class="col-span-5">Items Summary</div>
+<div class="col-span-2">Amount Paid</div>
+<div class="col-span-1">Status</div>
+<div class="col-span-2 text-right">Quick Action</div>
+</div>
+<div class="divide-y divide-slate-100">
+<!-- Record 1 -->
+<div class="p-5 md:px-6 md:py-4 grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 items-center hover:bg-slate-50/50 transition-colors">
+<div class="md:col-span-2 flex items-center justify-between md:block">
+<span class="font-display font-bold text-base text-slate-800">#A-18</span>
+<span class="text-xs text-slate-400 md:block">Yesterday • 1:15 PM</span>
+</div>
+<div class="md:col-span-5 flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">lunch_dining</span>
+</div>
+<div>
+<span class="text-sm font-semibold text-slate-800 block">Triple Schezwan Fried Rice</span>
+<span class="text-xs text-slate-400 block">Includes extra Manchurian gravy + schezwan dip</span>
+</div>
+</div>
+<div class="md:col-span-2 flex items-center justify-between md:block">
+<span class="md:hidden text-xs text-slate-400">Amount</span>
+<span class="text-sm font-semibold text-slate-800">₹85.00</span>
+</div>
+<div class="md:col-span-1 flex items-center justify-between md:block">
+<span class="md:hidden text-xs text-slate-400">Status</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/50">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Picked Up
+              </span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="w-full md:w-auto bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-semibold px-4 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 border border-slate-200/60 hover:border-emerald-200">
+<span class="material-symbols-outlined text-[16px]">replay</span>
+<span>Reorder</span>
+</button>
+</div>
+</div>
+<!-- Record 2 -->
+<div class="p-5 md:px-6 md:py-4 grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 items-center hover:bg-slate-50/50 transition-colors">
+<div class="md:col-span-2 flex items-center justify-between md:block">
+<span class="font-display font-bold text-base text-slate-800">#B-04</span>
+<span class="text-xs text-slate-400 md:block">24 Oct • 10:20 AM</span>
+</div>
+<div class="md:col-span-5 flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">bakery_dining</span>
+</div>
+<div>
+<span class="text-sm font-semibold text-slate-800 block">Masala Dosa + Cold Coffee</span>
+<span class="text-xs text-slate-400 block">Breakfast Special Combo • Coconut Chutney</span>
+</div>
+</div>
+<div class="md:col-span-2 flex items-center justify-between md:block">
+<span class="md:hidden text-xs text-slate-400">Amount</span>
+<span class="text-sm font-semibold text-slate-800">₹95.00</span>
+</div>
+<div class="md:col-span-1 flex items-center justify-between md:block">
+<span class="md:hidden text-xs text-slate-400">Status</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/50">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Picked Up
+              </span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="w-full md:w-auto bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-semibold px-4 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 border border-slate-200/60 hover:border-emerald-200">
+<span class="material-symbols-outlined text-[16px]">replay</span>
+<span>Reorder</span>
+</button>
+</div>
+</div>
+<!-- Record 3 -->
+<div class="p-5 md:px-6 md:py-4 grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 items-center hover:bg-slate-50/50 transition-colors">
+<div class="md:col-span-2 flex items-center justify-between md:block">
+<span class="font-display font-bold text-base text-slate-800">#A-77</span>
+<span class="text-xs text-slate-400 md:block">22 Oct • 4:45 PM</span>
+</div>
+<div class="md:col-span-5 flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">dinner_dining</span>
+</div>
+<div>
+<span class="text-sm font-semibold text-slate-800 block">Paneer Chilli Dry (Full)</span>
+<span class="text-xs text-slate-400 block">Evening Canteen Snack • Spicy Blend</span>
+</div>
+</div>
+<div class="md:col-span-2 flex items-center justify-between md:block">
+<span class="md:hidden text-xs text-slate-400">Amount</span>
+<span class="text-sm font-semibold text-slate-800">₹90.00</span>
+</div>
+<div class="md:col-span-1 flex items-center justify-between md:block">
+<span class="md:hidden text-xs text-slate-400">Status</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/50">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Picked Up
+              </span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="w-full md:w-auto bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-semibold px-4 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 border border-slate-200/60 hover:border-emerald-200">
+<span class="material-symbols-outlined text-[16px]">replay</span>
+<span>Reorder</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Campus Food Safety & Quality Guarantee Widget -->
+<div class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+<div>
+<span class="text-xs font-semibold text-slate-800 block">FSSAI Certified Campus Kitchen</span>
+<p class="text-xs text-slate-400 mt-0.5">Every snack prepared fresh under strict hygiene standards. Token timestamp guarantees warm serving.</p>
+</div>
+</div>
+<button class="w-full md:w-auto bg-slate-100 hover:bg-slate-200/80 text-slate-700 px-4 py-2 rounded-xl text-xs font-medium transition-colors shrink-0">
+          Report Kitchen Issue
+        </button>
+</div>
+</div>
+</main>
+<!-- Clean Minimalist Footer -->
+<footer class="w-full border-t border-slate-200/80 py-8 mt-12 bg-white text-slate-400 text-xs">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="font-display font-semibold text-slate-700">Byte Canteen</span>
+<span>•</span>
+<span>Don Bosco Institute of Technology</span>
+</div>
+<div>
+<span>© 2024 Byte Canteen. Fast-Token Kitchen Dispatch System.</span>
+</div>
+</div>
+</footer>
+<!-- Realtime Countdown Micro-script -->
+<script>
+    (function initTimer() {
+      let secondsRemaining = 222; // ~3m 42s
+      const timerElement = document.getElementById('countdown-timer');
+      
+      if (!timerElement) return;
+
+      const interval = setInterval(() => {
+        if (secondsRemaining <= 0) {
+          clearInterval(interval);
+          timerElement.innerText = "READY NOW!";
+          timerElement.classList.add('text-emerald-400', 'animate-pulse');
+          return;
+        }
+        secondsRemaining--;
+        const mins = Math.floor(secondsRemaining / 60);
+        const secs = secondsRemaining % 60;
+        timerElement.innerText = `~ 0${mins}:${secs < 10 ? '0' : ''}${secs} min`;
+      }, 1000);
+    })();
+  </script>
+</body></html>

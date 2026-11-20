@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "inverse-primary": "#a8d700", "on-primary-fixed-variant": "#3b4d00", "surface-container-lowest": "#ffffff", "on-surface-variant": "#434933", "surface-container-highest": "#e3e3de", "surface-container": "#efeee9", "secondary": "#2d4fcf", "primary-fixed": "#c0f500", "outline-variant": "#c4caac", "primary-fixed-dim": "#a8d700", "primary": "#4f6600", "secondary-container": "#4b69ea", "on-surface": "#1b1c19", "on-background": "#1b1c19", "on-secondary-fixed-variant": "#0736ba", "surface-bright": "#faf9f4", "tertiary-container": "#edebef", "on-tertiary-container": "#6a6a6d", "surface-dim": "#dbdad5", "tertiary-fixed-dim": "#c7c6ca", "secondary-fixed-dim": "#b8c3ff", "on-primary-container": "#597300", "on-error": "#ffffff", "inverse-surface": "#30312e", "outline": "#747a60", "on-primary": "#ffffff", "surface-variant": "#e3e3de", "surface": "#faf9f4", "on-secondary-container": "#fffbff", "surface-container-high": "#e9e8e3", "background": "#faf9f4", "error-container": "#ffdad6", "tertiary": "#5e5e62", "on-tertiary-fixed-variant": "#46464a", "on-error-container": "#93000a", "tertiary-fixed": "#e3e2e6", "on-primary-fixed": "#161f00", "surface-container-low": "#f5f4ef", "on-tertiary-fixed": "#1b1b1f", "secondary-fixed": "#dde1ff", "on-secondary": "#ffffff", "error": "#ba1a1a", "surface-tint": "#4f6600", "primary-container": "#c8ff00", "on-secondary-fixed": "#001355", "inverse-on-surface": "#f2f1ec" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xl": "2rem", "gutter": "1rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-xs": "0.375rem", "space-2xs": "0.25rem", "margin": "1rem", "margin-tablet": "1.5rem", "space-md": "1rem", "margin-desktop": "2.5rem", "space-2xl": "3rem" }, "fontFamily": { "headline-lg-mobile": ["Space Grotesk"], "price-lg": ["Space Grotesk"], "token-display": ["Space Grotesk"], "body-sm": ["Inter"], "body-md": ["Inter"], "headline-xl": ["Space Grotesk"], "label-caps": ["Space Grotesk"], "token-display-mobile": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-lg": ["Inter"], "headline-xl-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "label-md": ["Inter"], "headline-sm": ["Space Grotesk"] }, "fontSize": { "headline-lg-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "price-lg": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "token-display": ["56px", { "lineHeight": "56px", "letterSpacing": "-0.05em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.04em", "fontWeight": "700" }], "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700" }], "token-display-mobile": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.04em", "fontWeight": "700" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-xl-mobile": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#faf9f4;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="px-space-xs py-space-2xs bg-primary-container text-on-surface font-label-caps text-label-caps uppercase">DBIT</div><div class="flex flex-col"><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">KITCHEN LIVE</span></div><h1 class="font-headline-sm text-headline-sm uppercase text-on-surface">Menu</h1></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full px-margin pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-20">
+<!-- Live Rush Status Banner / High Velocity Ticker -->
+<div class="w-full bg-surface-container-lowest p-space-sm shadow-[3px_3px_0px_#1b1c19] mb-space-md">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-ping shrink-0"></span>
+<span class="font-label-caps text-label-caps uppercase text-on-surface truncate tracking-wider">
+          Counter #2: Fast prep active (7.2m avg)
+        </span>
+</div>
+<div class="px-space-2xs py-0.5 bg-primary-container text-on-surface font-label-caps text-label-caps uppercase shrink-0">
+        LIVE RUSH ⚡
+      </div>
+</div>
+</div>
+<!-- Search & Fast Filter Bar -->
+<div class="flex flex-col gap-space-sm mb-space-md">
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-space-sm flex items-center pointer-events-none text-on-surface">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full pl-10 pr-space-md py-space-sm bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant focus:outline-none shadow-[3px_3px_0px_#1b1c19] transition-all" id="menu-search" placeholder="Search Schezwan Rice, Vada Pav..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-space-xs flex items-center">
+<kbd class="px-1.5 py-0.5 bg-surface-container text-on-surface-variant font-label-caps text-label-caps uppercase">ESC</kbd>
+</div>
+</div>
+<!-- Micro Filter Badges -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-0.5">
+<button class="flex items-center gap-1.5 px-space-sm py-1 bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all" id="veg-toggle">
+<span class="w-3.5 h-3.5 flex items-center justify-center bg-surface-container-lowest shadow-[1px_1px_0px_#1b1c19]">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</span>
+        Veg Only
+      </button>
+<button class="flex items-center gap-1 px-space-sm py-1 bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+        &lt; 5m Prep
+      </button>
+<button class="flex items-center gap-1 px-space-sm py-1 bg-primary-container text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all">
+<span class="material-symbols-outlined text-[14px]">local_fire_department</span>
+        Specials
+      </button>
+</div>
+</div>
+<!-- Horizontal Scrollable Category Bar -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar pb-space-xs mb-space-md -mx-margin px-margin">
+<button class="shrink-0 px-space-md py-1.5 bg-on-surface text-surface font-label-caps text-label-caps uppercase shadow-[3px_3px_0px_#4f6600]">
+      All (14)
+    </button>
+<button class="shrink-0 px-space-md py-1.5 bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] hover:bg-surface-container transition-colors">
+      Quick Bites
+    </button>
+<button class="shrink-0 px-space-md py-1.5 bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] hover:bg-surface-container transition-colors">
+      South Indian
+    </button>
+<button class="shrink-0 px-space-md py-1.5 bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] hover:bg-surface-container transition-colors">
+      Chinese
+    </button>
+<button class="shrink-0 px-space-md py-1.5 bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] hover:bg-surface-container transition-colors">
+      Beverages
+    </button>
+</div>
+<!-- Menu Listing Stream -->
+<div class="flex flex-col gap-space-md">
+<!-- Item 1: Masala Dosa (In Tray: 1) -->
+<div class="w-full bg-surface-container-lowest shadow-[3px_3px_0px_#1b1c19] p-space-sm flex gap-space-sm">
+<div class="relative w-28 h-28 shrink-0 overflow-hidden bg-surface-container shadow-[2px_2px_0px_#1b1c19]">
+<img class="w-full h-full object-cover" data-alt="Golden crisp South Indian masala dosa served on banana leaf with fresh coconut chutney and spicy sambar bowls, natural canteen cafeteria ambient light, editorial brutalist framing, high contrast, warm delicious textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK47y1W1vGF_vZX_ekCJLJP67qQaxoChVBoaXSBJLXWtvUZtuDmG0fsCHffsrqjz27ad0d-wwrbJxDbQlVV5MtUNro2jgj6ttImIFMkuOQYGI5UoDjLfcb8I7q2UjFquccLJVLvORZVBcjs6FtchA78m96HJxv13_DBA0kIPFFZLAQhNrECCg2ADEgiNV4xM5yN7SPjIr2gRlURlQFiklsrZnq7rxyOyt07RG5Ea7Z"/>
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest p-0.5 shadow-[1px_1px_0px_#1b1c19]">
+<div class="w-3.5 h-3.5 flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Masala Dosa</h3>
+<span class="flex items-center gap-0.5 font-label-caps text-label-caps uppercase text-on-surface-variant bg-surface-container px-1 py-0.5 shrink-0">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 8m
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Crisp wafer-thin rice crepe with spiced potato podi filling.</p>
+</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xs">
+<span class="font-price-lg text-price-lg text-on-surface">₹50</span>
+<!-- Neo-brutalist Quantity Stepper -->
+<div class="flex items-center shadow-[2px_2px_0px_#1b1c19] bg-surface-container-lowest">
+<button class="w-7 h-7 flex items-center justify-center bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm active:translate-x-0.5">-</button>
+<span class="w-7 h-7 flex items-center justify-center font-headline-sm text-on-surface text-center">1</span>
+<button class="w-7 h-7 flex items-center justify-center bg-primary-container text-on-surface font-headline-sm active:translate-x-0.5">+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Classic Vada Pav (+ ADD) -->
+<div class="w-full bg-surface-container-lowest shadow-[3px_3px_0px_#1b1c19] p-space-sm flex gap-space-sm">
+<div class="relative w-28 h-28 shrink-0 overflow-hidden bg-surface-container shadow-[2px_2px_0px_#1b1c19]">
+<img class="w-full h-full object-cover" data-alt="Iconic Mumbai batata vada pav tucked in soft pav bun with spicy dry garlic red chutney and fried salted green chilli, studio top-down macro shot, high contrast food photography, vibrant neon tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD880-onjzxo0BWxFxEfhCmfP_0EIcAf2LOzRKGialpsAs8t0lcSv7jHDl05nmRF5bZWxUTQRgCJWeS5xf3aGry9_CAXA2abo1G7acz4WrpPn9TaaxnkUoNp43wO4cg8JSEGePp_qzgrhKodFj-Q_ifwPJW_rVebVAPOAoQ3sthHBmBesB0ZAmvTvlN4j3E-1IMSCXCrCo0DFJCy8LBEsrqgycz1BPl7jsnxltaNVTp"/>
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest p-0.5 shadow-[1px_1px_0px_#1b1c19]">
+<div class="w-3.5 h-3.5 flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</div>
+<div class="absolute bottom-1 right-1 bg-primary-container text-on-surface font-label-caps text-label-caps uppercase px-1">
+          FAST
+        </div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Classic Vada Pav</h3>
+<span class="flex items-center gap-0.5 font-label-caps text-label-caps uppercase text-on-surface-variant bg-surface-container px-1 py-0.5 shrink-0">
+<span class="material-symbols-outlined text-[13px]">bolt</span> 3m
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Golden potato dumpling, garlic podi, fresh pav.</p>
+</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xs">
+<span class="font-price-lg text-price-lg text-on-surface">₹20</span>
+<button class="px-space-sm py-1 bg-primary-container text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> ADD
+          </button>
+</div>
+</div>
+</div>
+<!-- Item 3: Triple Schezwan Fried Rice (+ ADD) -->
+<div class="w-full bg-surface-container-lowest shadow-[3px_3px_0px_#1b1c19] p-space-sm flex gap-space-sm">
+<div class="relative w-28 h-28 shrink-0 overflow-hidden bg-surface-container shadow-[2px_2px_0px_#1b1c19]">
+<img class="w-full h-full object-cover" data-alt="Wok tossed spicy Indo-Chinese triple schezwan fried rice with crispy noodles and fiery schezwan gravy accompaniment, steam rising, high energy street food style presentation, bold shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2AjvmDv_aPGxSXmQz563xMRZs5KUBV2BKyI7XJqPDX5DoB0t0uJnycFTi5eeP7MTsnYdMu8m49BddQiDBC0LA_LwAik1Q7Hkk_2iR-G5nkwmASd7h9rfkAe4lXQ-DRtTk-QC_LojLc06hgG3i-39ghXf56YXqeB0rikDNZkRAmIM1O61_y1oMIN5SBFozPkKJ6O6bNxUwD9TmncfUwokDH4wA70W1Fhzrac2ynA_i"/>
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest p-0.5 shadow-[1px_1px_0px_#1b1c19]">
+<div class="w-3.5 h-3.5 flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Triple Schezwan Rice</h3>
+<span class="flex items-center gap-0.5 font-label-caps text-label-caps uppercase text-on-surface-variant bg-surface-container px-1 py-0.5 shrink-0">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 12m
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Wok tossed rice, crispy noodles &amp; hot spicy gravy.</p>
+</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xs">
+<span class="font-price-lg text-price-lg text-on-surface">₹85</span>
+<button class="px-space-sm py-1 bg-primary-container text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> ADD
+          </button>
+</div>
+</div>
+</div>
+<!-- Item 4: Cold Coffee with Crush (In Tray: 2) -->
+<div class="w-full bg-surface-container-lowest shadow-[3px_3px_0px_#1b1c19] p-space-sm flex gap-space-sm">
+<div class="relative w-28 h-28 shrink-0 overflow-hidden bg-surface-container shadow-[2px_2px_0px_#1b1c19]">
+<img class="w-full h-full object-cover" data-alt="Chilled thick cafe style cold coffee in glass mug topped with rich chocolate drizzle, coffee foam and chocolate crush chips, condensation on glass, brutalist editorial food photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeJlLN52CkWroOaf_3BFYIgzZxp2Kw58R_T-AjchvREReTWxN0PCja-H7ppZYrwZl6r5QzkAFseKArgjXl3AB_vZ_INtYmCV9bLFYXZ6CunPg-H89kWinLVb1tBV4aT8AybxNVyFoweRNbmgPjTdeNckGkifRnx4jWBk3OY1-WYunMwI2rVrf6wP1IdJ4mE8er2SNG_Jfe-Ao6RRzMjKRStwuzGzG8gGdMRng-ci1g"/>
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest p-0.5 shadow-[1px_1px_0px_#1b1c19]">
+<div class="w-3.5 h-3.5 flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Cold Coffee + Crush</h3>
+<span class="flex items-center gap-0.5 font-label-caps text-label-caps uppercase text-on-surface-variant bg-surface-container px-1 py-0.5 shrink-0">
+<span class="material-symbols-outlined text-[13px]">bolt</span> 4m
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Double shot espresso, thick milk, dark choc crunch.</p>
+</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xs">
+<span class="font-price-lg text-price-lg text-on-surface">₹45</span>
+<div class="flex items-center shadow-[2px_2px_0px_#1b1c19] bg-surface-container-lowest">
+<button class="w-7 h-7 flex items-center justify-center bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm active:translate-x-0.5">-</button>
+<span class="w-7 h-7 flex items-center justify-center font-headline-sm text-on-surface text-center">2</span>
+<button class="w-7 h-7 flex items-center justify-center bg-primary-container text-on-surface font-headline-sm active:translate-x-0.5">+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 5: Paneer Chilli Dry (+ ADD) -->
+<div class="w-full bg-surface-container-lowest shadow-[3px_3px_0px_#1b1c19] p-space-sm flex gap-space-sm">
+<div class="relative w-28 h-28 shrink-0 overflow-hidden bg-surface-container shadow-[2px_2px_0px_#1b1c19]">
+<img class="w-full h-full object-cover" data-alt="Sizzling dry paneer chilli cubes glazed in dark soy sauce, spring onions, capsicum, sliced green chillies, high gloss finish, intense contrast editorial studio shoot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhZSDZAn98T_jSQW83MKkdj8CzwwALdAlCSlgjlXRBjkmRBrg6Vder9cdOSGmYahEahXvZ2gEdZQc_sGB_-Dbkuy-CD84FxYtBQ63PIeu3Sy0h9ydBhmcJe7hvK_N1fOYLL-vugv37-0G6uldzi2yTprie7ja8l7Svs5jOVV_m9zU7p3X094Gb6sEFjuua0wTPioJgD8s0nxaoELdV9YFC0La9Xxv5gQj4ttfQf4U8"/>
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest p-0.5 shadow-[1px_1px_0px_#1b1c19]">
+<div class="w-3.5 h-3.5 flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Paneer Chilli Dry</h3>
+<span class="flex items-center gap-0.5 font-label-caps text-label-caps uppercase text-on-surface-variant bg-surface-container px-1 py-0.5 shrink-0">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 10m
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Crisp cottage cheese cubes, bell peppers, scallions.</p>
+</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xs">
+<span class="font-price-lg text-price-lg text-on-surface">₹90</span>
+<button class="px-space-sm py-1 bg-primary-container text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> ADD
+          </button>
+</div>
+</div>
+</div>
+<!-- Item 6: Chicken Frankie Roll (Non-Veg, + ADD) -->
+<div class="w-full bg-surface-container-lowest shadow-[3px_3px_0px_#1b1c19] p-space-sm flex gap-space-sm">
+<div class="relative w-28 h-28 shrink-0 overflow-hidden bg-surface-container shadow-[2px_2px_0px_#1b1c19]">
+<img class="w-full h-full object-cover" data-alt="Tightly rolled Mumbai egg chicken frankie in paratha wrap filled with tandoori spiced chicken shreds, pickled onions, frankie masala powder, greaseproof paper wrap, mouthwatering lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv8UP62wJHeCB_uTxqjjIbO4KKULCjioJ2_fTEj83hIcUwPSsn4bVKhcQDVaYr2__6wAV9F3RDXuwmyqi264232QAFhGjBhjnyjr8IgArNNqGmd2l8_FbTemebOCHfLEee1dLbOtPKs425SF1NPUDOWbL_yH2FhYYmo6RPtT7Vo317tshucuiARA0FAadBHp2RJ9zMPsTtkegoksw5D71a_8Hw6QQifsT6BBdrkGgO"/>
+<!-- Non-Veg Badge Indicator -->
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest p-0.5 shadow-[1px_1px_0px_#1b1c19]">
+<div class="w-3.5 h-3.5 flex items-center justify-center">
+<span class="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-b-[8px] border-b-error"></span>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Chicken Frankie Roll</h3>
+<span class="flex items-center gap-0.5 font-label-caps text-label-caps uppercase text-on-surface-variant bg-surface-container px-1 py-0.5 shrink-0">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 9m
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Charred spiced chicken chunks, vinegar onions, masala egg fold.</p>
+</div>
+<div class="flex items-center justify-between mt-space-xs pt-space-xs">
+<span class="font-price-lg text-price-lg text-on-surface">₹70</span>
+<button class="px-space-sm py-1 bg-primary-container text-on-surface font-label-caps text-label-caps uppercase shadow-[2px_2px_0px_#1b1c19] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> ADD
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Floating Tray / Active Order Pill Widget -->
+<aside aria-label="Order Tray Bar" class="fixed bottom-20 left-margin right-margin z-40">
+<div class="w-full bg-primary-container p-space-sm shadow-[4px_4px_0px_#1b1c19] flex items-center justify-between gap-space-sm transition-transform active:scale-[0.99] cursor-pointer">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-on-surface animate-pulse"></span>
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">
+            2 ITEMS • ₹115
+          </span>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant font-bold tracking-wider">
+          ASAP ~8-10M • WINDOW 2
+        </span>
+</div>
+<div class="flex items-center gap-1 bg-on-surface text-surface px-space-md py-2 shadow-[2px_2px_0px_#4f6600] shrink-0">
+<span class="font-label-caps text-label-caps uppercase text-on-primary">VIEW TRAY</span>
+<span class="material-symbols-outlined text-[18px] text-on-primary">arrow_forward</span>
+</div>
+</div>
+</aside>
+</div>
+<script>
+  // Simple interaction for search feedback & toggle feedback
+  const searchInput = document.getElementById('menu-search');
+  if (searchInput) {
+    searchInput.addEventListener('focus', () => {
+      searchInput.classList.add('bg-surface-container-lowest');
+    });
+  }
+
+  const vegBtn = document.getElementById('veg-toggle');
+  if (vegBtn) {
+    vegBtn.addEventListener('click', () => {
+      vegBtn.classList.toggle('bg-primary-container');
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="bg-primary-container text-on-surface"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 px-space-xs transition-colors bg-primary-container text-on-surface" data-path="menu" href="#"><span class="material-symbols-outlined text-[20px]">restaurant_menu</span><span class="font-label-caps text-label-caps uppercase mt-space-2xs">Menu</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 px-space-xs text-on-surface-variant transition-colors" data-path="quick-order" href="#"><span class="material-symbols-outlined text-[20px]">bolt</span><span class="font-label-caps text-label-caps uppercase mt-space-2xs">Express</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 px-space-xs text-on-surface-variant transition-colors" data-path="live-queue" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-label-caps text-label-caps uppercase mt-space-2xs">Tokens</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 px-space-xs text-on-surface-variant transition-colors" data-path="campus-wallet" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-label-caps text-label-caps uppercase mt-space-2xs">Wallet</span></a></div></nav></body></html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>BYTE Canteen - Smart Campus Ordering</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin:0; padding:0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display:none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: "#ecfdf5",
+              100: "#d1fae5",
+              500: "#10b981",
+              600: "#059669",
+              700: "#047857",
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#f8fafc] font-sans text-slate-800 antialiased min-h-screen selection:bg-emerald-100 selection:text-emerald-900">
+<!-- Minimal Sleek Navbar -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+<!-- Brand & Status Pill -->
+<div class="flex items-center gap-6 shrink-0">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-emerald-500 flex items-center justify-center text-white shadow-sm shadow-emerald-500/20">
+<span class="material-symbols-outlined text-xl">restaurant_menu</span>
+</div>
+<div>
+<span class="font-display font-bold text-slate-900 text-base tracking-tight block leading-tight">BYTE <span class="text-emerald-600 font-semibold">CANTEEN</span></span>
+<span class="text-[11px] font-medium text-slate-400 block tracking-wide">DBIT Central Hub</span>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-slate-50 border border-slate-200/70 rounded-full text-xs font-medium text-slate-600">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span>Normal prep • <span class="text-slate-800 font-semibold">~8m avg wait</span></span>
+</div>
+</div>
+<!-- Clean Navigation Links -->
+<nav class="hidden lg:flex items-center gap-1 bg-slate-100/70 p-1 rounded-full border border-slate-200/50">
+<a aria-current="page" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-900 shadow-sm transition-all" href="#">Menu &amp; Order</a>
+<a class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors" href="#">Active Token <span class="ml-1 text-[11px] text-emerald-600 font-semibold">#A-42</span></a>
+<a class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors" href="#">Order History</a>
+<a class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors" href="#">Wallet <span class="ml-1 font-semibold text-slate-900">₹340</span></a>
+</nav>
+<!-- User Profile -->
+<div class="flex items-center gap-3 shrink-0">
+<div class="hidden sm:flex flex-col text-right leading-tight">
+<span class="text-xs font-semibold text-slate-800">Aarav Shah</span>
+<span class="text-[11px] text-slate-400">CS '26</span>
+</div>
+<div class="relative">
+<img alt="Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100 hover:ring-emerald-200 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLXGFFeInlQWsB58H5KTLqcrqzqqUariCONn8ZDHaGKzpykrQRR4Q53V3O8iQ47sbFLRQ7wj99v9qJkak179iwD2Yze0Iaxe8tiFFTDdL52eLLiASRjFv_qbjMSR_d0uUvJj6JPGO3vwPnkDwOUgxK-CWk9NRI_CUEQ3SHJvvluEp4jmBuNYGkkErBmVhrc3vgGEAMr0yyCYAThXb9R9Z2cJVPO0xmixvrS30-DyA3"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+</div>
+</div>
+</div>
+</header>
+<!-- Live Pulse Sub-banner (Subtle & Elegant) -->
+<div class="bg-gradient-to-r from-emerald-50/80 via-teal-50/60 to-emerald-50/80 border-b border-emerald-100/60 text-slate-600 text-xs py-2 px-4">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-2.5 overflow-hidden text-ellipsis whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100/80 text-emerald-800 uppercase tracking-wide">
+<span class="material-symbols-outlined text-[12px]">bolt</span> Live
+        </span>
+<span class="text-slate-700 font-medium">Counter #2: South Indian ready in 6 mins</span>
+<span class="text-slate-300">•</span>
+<span class="text-slate-500">Tokens #A-40 to #A-48 ready at Pickup Counter</span>
+</div>
+<div class="hidden md:flex items-center gap-1.5 text-amber-700 bg-amber-50/80 px-2.5 py-0.5 rounded-full text-[11px] font-medium border border-amber-200/50">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+<span>Recess rush in 14m</span>
+</div>
+</div>
+</div>
+<!-- Main Content Workspace -->
+<main class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT SECTION: Menu Catalog (8 Cols) -->
+<section class="lg:col-span-8 flex flex-col gap-6">
+<!-- Title & Station Metadata -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[11px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">Station 01 • DBIT Central</span>
+<span class="text-xs text-slate-400">11:45 AM Session</span>
+</div>
+<h1 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Today's Fresh Menu</h1>
+</div>
+<div class="flex items-center gap-3 bg-white px-4 py-2 rounded-2xl border border-slate-100 shadow-sm self-start sm:self-auto">
+<div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">schedule</span>
+</div>
+<div>
+<span class="text-[11px] text-slate-400 font-medium block">Average Prep</span>
+<span class="text-xs font-bold text-slate-800">7.2 Mins</span>
+</div>
+</div>
+</div>
+<!-- Refined Minimal Search & Pill Filters -->
+<div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex flex-col gap-3">
+<!-- Search input -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-12 py-2.5 bg-slate-50 border-0 rounded-xl text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-emerald-500/20 focus:bg-white transition-all outline-none" id="menuSearchInput" placeholder="Search Schezwan Rice, Vada Pav, Cold Coffee..." type="text"/>
+<span class="hidden sm:inline-block absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-semibold text-slate-400 bg-white border border-slate-200/80 px-1.5 py-0.5 rounded-md shadow-xs">⌘K</span>
+</div>
+<!-- Secondary Filters Row -->
+<div class="flex flex-wrap items-center justify-between gap-2.5 pt-1">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Veg Toggle -->
+<label class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 hover:bg-slate-100 cursor-pointer border border-slate-200/60 transition-all select-none">
+<input checked="" class="sr-only peer" id="vegOnlyToggle" type="checkbox"/>
+<div class="w-3.5 h-3.5 rounded-full border border-emerald-600 flex items-center justify-center p-0.5">
+<div class="w-2 h-2 rounded-full bg-emerald-600"></div>
+</div>
+<span class="text-xs font-medium text-slate-700">Veg Only</span>
+</label>
+<!-- Fast Prep Filter -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100/70 border border-emerald-200/50 text-xs font-medium transition-all">
+<span class="material-symbols-outlined text-sm">timer</span>
+<span>&lt; 5 mins prep</span>
+</button>
+<!-- Campus Specials -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-50 text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200/60 text-xs font-medium transition-all">
+<span class="material-symbols-outlined text-sm text-amber-500">local_fire_department</span>
+<span>Specials</span>
+</button>
+</div>
+<span class="text-[11px] font-medium text-slate-400">14 items available</span>
+</div>
+</div>
+<!-- Modern Category Tabs -->
+<div class="w-full overflow-x-auto pb-1 scrollbar-none">
+<div class="flex items-center gap-2 min-w-max">
+<button class="px-4 py-2 rounded-full text-xs font-semibold bg-slate-900 text-white shadow-sm transition-all hover:opacity-90">
+              All Items (14)
+            </button>
+<button class="px-4 py-2 rounded-full text-xs font-medium bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200/70 transition-all">
+              ⚡ Quick Bites
+            </button>
+<button class="px-4 py-2 rounded-full text-xs font-medium bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200/70 transition-all">
+              🍛 South Indian
+            </button>
+<button class="px-4 py-2 rounded-full text-xs font-medium bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200/70 transition-all">
+              🥢 Chinese &amp; Meals
+            </button>
+<button class="px-4 py-2 rounded-full text-xs font-medium bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200/70 transition-all">
+              🥤 Beverages
+            </button>
+<button class="px-4 py-2 rounded-full text-xs font-medium bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200/70 transition-all">
+              🍱 Combos
+            </button>
+</div>
+</div>
+<!-- Food Matrix Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- ITEM 1: Masala Dosa -->
+<article class="bg-white rounded-2xl p-4 border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-slate-200/80 transition-all flex flex-col justify-between group">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-3.5 bg-slate-100">
+<img class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ease-out" data-alt="Golden crisp South Indian Masala Dosa roasted with ghee, served on traditional steel tray with steaming hot lentil sambar and creamy fresh white coconut chutney. Warm lighting, vibrant authentic Mumbai college canteen atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUWLw5m7CZzU2npuh2bcyucJ53toB3uqFqdfHXldj40UpoGDfsxIySOivzWJimxf5JTQI9ZPHECHUOFpE_FHrmEGIexPizzoZJieSy7n_unILnhw8Q7tRbGSxwig7IfvmGDuFMYeIdTG09lvanrtR_ycfA8Hyu1snyPVuAsCXJvF4czlTPJMqf8KkwE09DmX7XnKCRljqAXCiXIi8h_W2GoRokjUHBAQZ8lOKk3nt_"/>
+<!-- Floating tags -->
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<div class="bg-white/95 backdrop-blur-sm p-1 rounded-md shadow-xs flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+</div>
+<span class="bg-white/95 backdrop-blur-sm text-slate-700 px-2 py-0.5 rounded-md text-[10px] font-semibold flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[11px] text-slate-400">schedule</span> 8m
+                  </span>
+</div>
+<div class="absolute bottom-2.5 right-2.5 bg-slate-900/70 backdrop-blur-sm text-white px-2 py-0.5 rounded-md text-[10px] font-medium tracking-wide">
+                  Station 2
+                </div>
+</div>
+<div>
+<h3 class="font-display font-bold text-slate-900 text-base leading-tight group-hover:text-emerald-700 transition-colors">Masala Dosa</h3>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">Crispy golden thin dosa stuffed with spiced turmeric potatoes, served with coconut chutney &amp; hot sambar.</p>
+</div>
+</div>
+<!-- Price & Action -->
+<div class="pt-4 mt-2 border-t border-slate-50 flex items-center justify-between">
+<div>
+<span class="text-xs text-slate-400 font-medium">Price</span>
+<p class="font-display font-bold text-lg text-slate-900 leading-none">₹50</p>
+</div>
+<!-- Quantity Stepper -->
+<div class="inline-flex items-center rounded-full bg-slate-100 p-0.5">
+<button class="w-7 h-7 rounded-full flex items-center justify-center bg-white text-slate-700 shadow-xs hover:bg-slate-50 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-xs">remove</span>
+</button>
+<span class="w-7 text-center font-display font-bold text-xs text-slate-900">1</span>
+<button class="w-7 h-7 rounded-full flex items-center justify-center bg-emerald-600 text-white shadow-xs hover:bg-emerald-700 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-xs">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ITEM 2: Classic Vada Pav -->
+<article class="bg-white rounded-2xl p-4 border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-slate-200/80 transition-all flex flex-col justify-between group">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-3.5 bg-slate-100">
+<img class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ease-out" data-alt="Crispy hot golden fried Batata Vada nestled inside a soft bakery pav bun, coated with spicy fiery red dry garlic chutney and fried green chili, placed on canteen paper liner. Clean editorial modern food photograph." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5hTQtnZVn1XSI3_CxVdJXgbSH0kIV6yvZkEIYdhsruptBiZa5GCUliRbGO7wOM-ZmLNT---hmnvtnjoBsPkwSo2L6WPuXCE4GCHyBgL9jAz5Dg6uZRhH1yG4ZrAYQqXrhk5P1mVohD8tOacJOoR2F4H_bD-o9A3EvJBYX0GZQzYJQVhcUcBmvfCKjaLodU4IMof15mnvSCClcaHgKwQcFNWcL0swHq4gVqwzXiQE_"/>
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<div class="bg-white/95 backdrop-blur-sm p-1 rounded-md shadow-xs flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+</div>
+<span class="bg-white/95 backdrop-blur-sm text-slate-700 px-2 py-0.5 rounded-md text-[10px] font-semibold flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[11px] text-amber-500">bolt</span> 3m
+                  </span>
+</div>
+<div class="absolute top-2.5 right-2.5 bg-emerald-500/90 backdrop-blur-sm text-white px-2 py-0.5 rounded-md text-[10px] font-semibold tracking-wide shadow-xs">
+                  Bestseller
+                </div>
+</div>
+<div>
+<h3 class="font-display font-bold text-slate-900 text-base leading-tight group-hover:text-emerald-700 transition-colors">Classic Vada Pav</h3>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">Authentic Mumbai spiced potato fritter inside fluffy ladi pav with dry roasted garlic peanut chutney.</p>
+</div>
+</div>
+<div class="pt-4 mt-2 border-t border-slate-50 flex items-center justify-between">
+<div>
+<span class="text-xs text-slate-400 font-medium">Price</span>
+<p class="font-display font-bold text-lg text-slate-900 leading-none">₹20</p>
+</div>
+<button class="px-4 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs hover:shadow transition-all active:scale-95 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">add</span> Add
+              </button>
+</div>
+</article>
+<!-- ITEM 3: Triple Schezwan Fried Rice -->
+<article class="bg-white rounded-2xl p-4 border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-slate-200/80 transition-all flex flex-col justify-between group">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-3.5 bg-slate-100">
+<img class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ease-out" data-alt="Vibrant wok-tossed Triple Schezwan fried rice with fresh cabbage, spring onions, bell peppers, topped with crispy golden fried noodles and a separate bowl of spicy red Schezwan canteen gravy. Cinematic top-down food aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0niwRqNl2vgMBJXmCwgaSyonv_JsSiiUznVHF6mikq6QREOTeFb_PnjsiNsQWp3atHemV1wv72Bf0UfP7xIIXnkScGhQmQTuzBNg_w21Zc_LygxNH4K0RCRjoiUANkx5dgBi6Z5G_YOnogUapcSodj4cGup79X5Dwf4KfL5xm4HEPC_pjKwxFgty62NSUQ0_UYj4L6TWkCuil107UL42zcAM2_UkNjEaFc6tPDi4j"/>
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<div class="bg-white/95 backdrop-blur-sm p-1 rounded-md shadow-xs flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+</div>
+<span class="bg-white/95 backdrop-blur-sm text-slate-700 px-2 py-0.5 rounded-md text-[10px] font-semibold flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[11px] text-slate-400">schedule</span> 12m
+                  </span>
+</div>
+</div>
+<div>
+<h3 class="font-display font-bold text-slate-900 text-base leading-tight group-hover:text-emerald-700 transition-colors">Triple Schezwan Fried Rice</h3>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">Wok-tossed spicy rice &amp; noodles blended with crispy crunchies, served with hot schezwan dipping gravy.</p>
+</div>
+</div>
+<div class="pt-4 mt-2 border-t border-slate-50 flex items-center justify-between">
+<div>
+<span class="text-xs text-slate-400 font-medium">Price</span>
+<p class="font-display font-bold text-lg text-slate-900 leading-none">₹85</p>
+</div>
+<button class="px-4 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs hover:shadow transition-all active:scale-95 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">add</span> Add
+              </button>
+</div>
+</article>
+<!-- ITEM 4: Cold Coffee with Crush -->
+<article class="bg-white rounded-2xl p-4 border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-slate-200/80 transition-all flex flex-col justify-between group">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-3.5 bg-slate-100">
+<img class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ease-out" data-alt="Thick frothy iced cold coffee in clear takeaway cup lined with dark chocolate syrup swirls, topped with chocolate sprinkles and ice cubes. Modern high-contrast cafe photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDradHgtseK3PAk-NHjYx5S5tb8hNihNlR-RmYfN4iQS3dy_xNZ5HO8l5xFA2-2guha8pciRDy3yjTM_O_IMkJjnXeiA63C0JQR7jUmFc8RmjPQVr0Hp40yku7ZH7MiT3I8_LWFI2LkPDy1XBot7MhzpDZbNsV0jRwAuDbQrvZDJCF4wSLo-rm1HIJ_qBT5VL5ZyKNqmEfm9NR9c4fhMuoU6FKjTQPt8gepT3i0RrTY"/>
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<div class="bg-white/95 backdrop-blur-sm p-1 rounded-md shadow-xs flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+</div>
+<span class="bg-white/95 backdrop-blur-sm text-slate-700 px-2 py-0.5 rounded-md text-[10px] font-semibold flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[11px] text-amber-500">bolt</span> 4m
+                  </span>
+</div>
+</div>
+<div>
+<h3 class="font-display font-bold text-slate-900 text-base leading-tight group-hover:text-emerald-700 transition-colors">Cold Coffee with Crush</h3>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">Creamy blended espresso cold milk shake laced with thick dark chocolate fudge crush drizzle.</p>
+</div>
+</div>
+<div class="pt-4 mt-2 border-t border-slate-50 flex items-center justify-between">
+<div>
+<span class="text-xs text-slate-400 font-medium">Price</span>
+<p class="font-display font-bold text-lg text-slate-900 leading-none">₹45</p>
+</div>
+<div class="inline-flex items-center rounded-full bg-slate-100 p-0.5">
+<button class="w-7 h-7 rounded-full flex items-center justify-center bg-white text-slate-700 shadow-xs hover:bg-slate-50 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-xs">remove</span>
+</button>
+<span class="w-7 text-center font-display font-bold text-xs text-slate-900">2</span>
+<button class="w-7 h-7 rounded-full flex items-center justify-center bg-emerald-600 text-white shadow-xs hover:bg-emerald-700 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-xs">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ITEM 5: Paneer Chilli Dry -->
+<article class="bg-white rounded-2xl p-4 border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-slate-200/80 transition-all flex flex-col justify-between group">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-3.5 bg-slate-100">
+<img class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ease-out" data-alt="Indo-Chinese spicy Paneer Chilli Dry with tossed green capsicum cubes, red onions, slit green chillies, and spring onion garnish in glistening dark soy sauce glaze. Clean college canteen food plating." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp1T51j7WsTLgQQw7XwtORTP5-iYyE2RzmNk6r_2Be5r-huW2CamTJmh91rs0sXJ5mvrvEyUqNzqXsiuwoA1W-urVEV6G3Snrg2rceGQp6xgfVZGTysAR6NcXWS8ifJRXxgY8hSKkn6EdFqRsBVDziN9BTfgR-z2hCJ4qvT7lcNzrP_qv0E_5VhmtM_EiMxBGcPsEqxxHxkxvoGQ04fAI3UZFjj9Kd46aeXYB_QQeK"/>
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<div class="bg-white/95 backdrop-blur-sm p-1 rounded-md shadow-xs flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+</div>
+<span class="bg-white/95 backdrop-blur-sm text-slate-700 px-2 py-0.5 rounded-md text-[10px] font-semibold flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[11px] text-slate-400">schedule</span> 10m
+                  </span>
+</div>
+</div>
+<div>
+<h3 class="font-display font-bold text-slate-900 text-base leading-tight group-hover:text-emerald-700 transition-colors">Paneer Chilli Dry</h3>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">Crisp battered cottage cheese chunks tossed with fresh bell peppers, scallions, &amp; fiery garlic chili sauce.</p>
+</div>
+</div>
+<div class="pt-4 mt-2 border-t border-slate-50 flex items-center justify-between">
+<div>
+<span class="text-xs text-slate-400 font-medium">Price</span>
+<p class="font-display font-bold text-lg text-slate-900 leading-none">₹90</p>
+</div>
+<button class="px-4 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs hover:shadow transition-all active:scale-95 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">add</span> Add
+              </button>
+</div>
+</article>
+<!-- ITEM 6: Chicken Frankie Roll -->
+<article class="bg-white rounded-2xl p-4 border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-slate-200/80 transition-all flex flex-col justify-between group">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-3.5 bg-slate-100">
+<img class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ease-out" data-alt="Mumbai style Chicken Frankie roll sliced at angle showing juicy seasoned chicken chunks, tangy mint chutney, sliced red onions, and egg coated paratha wrap, served in takeaway foil wrap on white tray." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfzRUBzFvrtAWmrh6MUwQ_vKIxUW98Rvr2cH4KVo9-ovAOUvlAwvsfoah5kXAS6IgZzwSPyd8WsZBdobKdiPL98x8JTFNOMH787bU0Us-W8dwLdhPNYWzvqnWJTiuMsLpYeuUC7u-GOwR5JWzAlzvAI4Ov1RGs3vsk8j6QjqR4SvI_gv287fe2buZ29qZQRvK87BBjq6tQT18MLUZz3rEnelw4YYQM7OVjoEhzC38N"/>
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<div class="bg-white/95 backdrop-blur-sm p-1 rounded-md shadow-xs flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+</div>
+<span class="bg-white/95 backdrop-blur-sm text-slate-700 px-2 py-0.5 rounded-md text-[10px] font-semibold flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[11px] text-slate-400">schedule</span> 9m
+                  </span>
+</div>
+<div class="absolute top-2.5 right-2.5 bg-rose-50/95 backdrop-blur-sm text-rose-700 border border-rose-100 px-2 py-0.5 rounded-md text-[10px] font-semibold tracking-wide">
+                  Non-Veg
+                </div>
+</div>
+<div>
+<h3 class="font-display font-bold text-slate-900 text-base leading-tight group-hover:text-emerald-700 transition-colors">Chicken Frankie Roll</h3>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">Juicy spiced shredded chicken tikka wrapped in an egg-layered flaky paratha with sliced pickled onions.</p>
+</div>
+</div>
+<div class="pt-4 mt-2 border-t border-slate-50 flex items-center justify-between">
+<div>
+<span class="text-xs text-slate-400 font-medium">Price</span>
+<p class="font-display font-bold text-lg text-slate-900 leading-none">₹70</p>
+</div>
+<button class="px-4 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs hover:shadow transition-all active:scale-95 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">add</span> Add
+              </button>
+</div>
+</article>
+</div>
+<!-- Kitchen Status Micro-card -->
+<div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">soup_kitchen</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-semibold text-slate-800 text-sm">Kitchen Queue Running Fast</span>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+<p class="text-xs text-slate-500">Tokens are dispatched directly to station screens with zero physical queueing.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="text-[11px] font-medium bg-slate-50 text-slate-600 px-3 py-1 rounded-full border border-slate-200/60">Counter #1: Snacks</span>
+<span class="text-[11px] font-medium bg-slate-50 text-slate-600 px-3 py-1 rounded-full border border-slate-200/60">Counter #2: Meals</span>
+</div>
+</div>
+</section>
+<!-- RIGHT SECTION: Sticky Minimal Cart & Checkout Drawer (4 Cols) -->
+<aside class="lg:col-span-4 lg:sticky lg:top-24 flex flex-col gap-4">
+<div class="bg-white rounded-3xl border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden">
+<!-- Header -->
+<div class="p-5 border-b border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">local_mall</span>
+</div>
+<div>
+<h2 class="font-display font-bold text-slate-900 text-base leading-none">Your Tray</h2>
+<span class="text-[11px] text-slate-400 font-medium">2 items selected</span>
+</div>
+</div>
+<span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">
+              Lunch Open
+            </span>
+</div>
+<!-- Items List -->
+<div class="p-5 flex flex-col gap-4">
+<!-- Item 1 -->
+<div class="p-3.5 rounded-2xl bg-slate-50/70 border border-slate-100 flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600 mt-1 shrink-0"></span>
+<div>
+<h4 class="font-semibold text-slate-900 text-sm leading-snug">Cold Coffee with Crush</h4>
+<span class="text-xs text-slate-400 font-medium">₹45 × 2</span>
+</div>
+</div>
+<span class="font-display font-bold text-slate-900 text-sm">₹90</span>
+</div>
+<div class="flex items-center justify-between pt-1 text-xs">
+<span class="text-slate-400 italic text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">edit_note</span> Extra chocolate crush
+                </span>
+<div class="inline-flex items-center rounded-full bg-white border border-slate-200/60 p-0.5 shadow-xs">
+<button class="w-5 h-5 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors">
+<span class="material-symbols-outlined text-[11px]">remove</span>
+</button>
+<span class="w-5 text-center font-bold text-[11px] text-slate-800">2</span>
+<button class="w-5 h-5 rounded-full flex items-center justify-center bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">
+<span class="material-symbols-outlined text-[11px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-3.5 rounded-2xl bg-slate-50/70 border border-slate-100 flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600 mt-1 shrink-0"></span>
+<div>
+<h4 class="font-semibold text-slate-900 text-sm leading-snug">Classic Vada Pav</h4>
+<span class="text-xs text-slate-400 font-medium">₹20 × 1</span>
+</div>
+</div>
+<span class="font-display font-bold text-slate-900 text-sm">₹20</span>
+</div>
+<div class="flex items-center justify-between pt-1 text-xs">
+<span class="text-slate-400 italic text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">edit_note</span> Extra dry garlic chutney
+                </span>
+<div class="inline-flex items-center rounded-full bg-white border border-slate-200/60 p-0.5 shadow-xs">
+<button class="w-5 h-5 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors">
+<span class="material-symbols-outlined text-[11px]">remove</span>
+</button>
+<span class="w-5 text-center font-bold text-[11px] text-slate-800">1</span>
+<button class="w-5 h-5 rounded-full flex items-center justify-center bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">
+<span class="material-symbols-outlined text-[11px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Segmented Dispatch Selector -->
+<div class="pt-2">
+<div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-2">
+<span>Select Dispatch</span>
+<span class="text-[11px] font-normal text-slate-400">Station 1 &amp; 3</span>
+</div>
+<div class="grid grid-cols-2 gap-2 bg-slate-100/80 p-1 rounded-2xl">
+<!-- ASAP Option -->
+<label class="cursor-pointer relative flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all peer-checked:bg-white has-[:checked]:bg-white has-[:checked]:shadow-xs has-[:checked]:text-slate-900 text-slate-600">
+<input checked="" class="sr-only" name="pickupSlot" type="radio"/>
+<div class="flex items-center gap-1 text-xs font-bold">
+<span class="material-symbols-outlined text-sm text-emerald-600">bolt</span>
+<span>ASAP</span>
+</div>
+<span class="text-[10px] text-slate-400 font-medium">~8-10 mins</span>
+</label>
+<!-- Scheduled Recess Option -->
+<label class="cursor-pointer relative flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all has-[:checked]:bg-white has-[:checked]:shadow-xs has-[:checked]:text-slate-900 text-slate-600">
+<input class="sr-only" name="pickupSlot" type="radio"/>
+<div class="flex items-center gap-1 text-xs font-bold">
+<span class="material-symbols-outlined text-sm text-slate-400">schedule</span>
+<span>1:15 PM</span>
+</div>
+<span class="text-[10px] text-slate-400 font-medium">Next Recess</span>
+</label>
+</div>
+</div>
+<!-- Bill Breakdown Summary -->
+<div class="py-3 border-t border-slate-100 flex flex-col gap-2 text-xs">
+<div class="flex items-center justify-between text-slate-500">
+<span>Items Subtotal</span>
+<span class="font-medium text-slate-800">₹110.00</span>
+</div>
+<div class="flex items-center justify-between text-slate-500">
+<span class="flex items-center gap-1">
+                  Eco Food Container
+                  <span class="material-symbols-outlined text-[13px] text-slate-400" title="Recyclable food-grade packing">info</span>
+</span>
+<span class="font-medium text-slate-800">₹5.00</span>
+</div>
+<div class="flex items-center justify-between text-slate-500">
+<span>Campus Tech Fee</span>
+<span class="font-semibold text-emerald-600">FREE</span>
+</div>
+<div class="pt-2 mt-1 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">Total Amount</span>
+<span class="font-display font-bold text-xl text-slate-900">₹115.00</span>
+</div>
+<div class="text-right">
+<span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                    Wallet: ₹340
+                  </span>
+</div>
+</div>
+</div>
+<!-- Sleek Pill CTA Button -->
+<button class="w-full py-3.5 px-6 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-display font-semibold text-sm shadow-md shadow-emerald-600/20 hover:shadow-lg hover:shadow-emerald-600/30 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group">
+<span>Proceed to Pay ₹115</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+<!-- Trust Indicator -->
+<div class="flex items-center justify-center gap-1.5 text-slate-400 text-[11px]">
+<span class="material-symbols-outlined text-xs text-emerald-600">verified</span>
+<span>Instant Digital Token generation via UPI/Wallet</span>
+</div>
+</div>
+<!-- Bottom Micro Status Bar -->
+<div class="bg-slate-50 px-5 py-3 border-t border-slate-100 flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 text-slate-600">
+<span class="material-symbols-outlined text-sm text-slate-400">confirmation_number</span>
+<span>Next token: <strong class="text-slate-800 font-semibold">#A-43</strong></span>
+</div>
+<span class="text-[11px] font-medium text-emerald-600">Live Kitchen Sync</span>
+</div>
+</div>
+<!-- Minimal Help Box -->
+<div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between text-slate-600 text-xs hover:border-slate-200 transition-colors cursor-pointer">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-base">help_outline</span>
+<span class="font-medium">Wrong slot? 1-tap cancel before prep begins</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">chevron_right</span>
+</div>
+</aside>
+</div>
+</main>
+<!-- Clean Minimal Footer -->
+<footer class="mt-16 border-t border-slate-200/60 bg-white py-8">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+<div class="flex items-center gap-2 font-medium text-slate-600">
+<span>BYTE CANTEEN</span>
+<span>•</span>
+<span>Don Bosco Institute of Technology</span>
+</div>
+<div>
+        © 2024 Byte Canteen. Modern Campus Fast-Token System.
+      </div>
+</div>
+</footer>
+</body></html>

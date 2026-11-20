@@ -9,13 +9,15 @@ import { Mail, KeyRound, Eye, EyeOff, Wifi, Zap, ArrowRight, UserCheck } from 'l
 export default function LoginPage() {
   const navigate = useNavigate()
   const loginAsGuest = useAuthStore((s) => s.loginAsGuest)
+  const loginAsKitchenStaff = useAuthStore((s) => s.loginAsKitchenStaff)
 
-  const [tab, setTab] = useState('student') // 'student' | 'faculty' | 'guest'
+  const [tab, setTab] = useState('student') // 'student' | 'faculty' | 'guest' | 'kitchen'
   const [email, setEmail] = useState('rahul.patil24@dbit.in')
   const [password, setPassword] = useState('')
   const [showPwd, setShowPwd] = useState(false)
   const [loading, setLoading] = useState(false)
   const [guestLoading, setGuestLoading] = useState(false)
+  const [kitchenLoading, setKitchenLoading] = useState(false)
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -48,6 +50,19 @@ export default function LoginPage() {
       toast.error('Failed to start guest session: ' + err.message)
     } finally {
       setGuestLoading(false)
+    }
+  }
+
+  const handleKitchenLogin = async (staffName = 'Chef Suresh (Kitchen Manager)') => {
+    setKitchenLoading(true)
+    try {
+      await loginAsKitchenStaff(staffName)
+      toast.success('Kitchen Staff Console Activated 👨‍🍳')
+      navigate('/kitchen')
+    } catch (err) {
+      toast.error('Failed to start kitchen session: ' + err.message)
+    } finally {
+      setKitchenLoading(false)
     }
   }
 
@@ -136,11 +151,12 @@ export default function LoginPage() {
           style={{ border: '1.5px solid #121316', boxShadow: '6px 6px 0px #121316' }}
         >
           {/* Tabs */}
-          <div className="grid grid-cols-3 p-1 rounded-lg gap-1" style={{ background: 'var(--color-surface-container)' }}>
+          <div className="grid grid-cols-4 p-1 rounded-lg gap-1" style={{ background: 'var(--color-surface-container)' }}>
             {[
               ['student', '🎓', 'Student'],
               ['faculty', '🪪', 'Faculty'],
               ['guest', '⚡', 'Guest'],
+              ['kitchen', '👨‍🍳', 'Kitchen'],
             ].map(([key, icon, label]) => (
               <button
                 key={key}
@@ -149,21 +165,78 @@ export default function LoginPage() {
                   setTab(key)
                   if (key === 'student') setEmail('rahul.patil24@dbit.in')
                   if (key === 'faculty') setEmail('dr.deshmukh@dbit.in')
+                  if (key === 'kitchen') setEmail('kitchen@dbit.in')
                 }}
-                className={`py-2 rounded text-[11px] font-black uppercase tracking-wide transition-all flex items-center justify-center gap-1 ${
+                className={`py-2 rounded text-[10px] sm:text-[11px] font-black uppercase tracking-wide transition-all flex items-center justify-center gap-1 ${
                   tab === key
                     ? 'bg-[#121316] text-[#c8ff00] shadow-sm'
                     : 'text-[#121316] hover:bg-white/50'
                 }`}
                 style={{ fontFamily: 'var(--font-headline)' }}
               >
-                <span>{icon}</span> {label}
+                <span>{icon}</span> <span>{label}</span>
               </button>
             ))}
           </div>
 
-          {/* TAB CONTENT: GUEST PASS */}
-          {tab === 'guest' ? (
+          {/* TAB CONTENT: KITCHEN STAFF */}
+          {tab === 'kitchen' ? (
+            <div className="flex flex-col gap-5">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-[#121316] text-[#c8ff00] border border-[#121316] mb-2">
+                  <span>👨‍🍳</span> Canteen Staff & Chef Access
+                </div>
+                <h2 className="text-3xl font-black uppercase tracking-tight leading-tight" style={{ fontFamily: 'var(--font-headline)' }}>
+                  Kitchen Hub
+                </h2>
+                <p className="text-sm mt-1" style={{ color: 'var(--color-on-surface-variant)' }}>
+                  Manage live order tokens, mark items sold out, adjust stock, and update menu prices in real time.
+                </p>
+              </div>
+
+              {/* Kitchen feature highlights */}
+              <div className="p-4 rounded-lg flex flex-col gap-2.5" style={{ background: 'var(--color-surface-container)', border: '1.5px solid var(--color-outline-variant)' }}>
+                <div className="flex items-center gap-2 text-xs font-bold text-[#121316]">
+                  <span className="text-[#059669]">✓</span> Live order queue with 1-click status progression
+                </div>
+                <div className="flex items-center gap-2 text-xs font-bold text-[#121316]">
+                  <span className="text-[#059669]">✓</span> 1-click In Stock / Sold Out inventory toggles
+                </div>
+                <div className="flex items-center gap-2 text-xs font-bold text-[#121316]">
+                  <span className="text-[#059669]">✓</span> Edit menu prices, dish details, and stock counts
+                </div>
+                <div className="flex items-center gap-2 text-xs font-bold text-[#121316]">
+                  <span className="text-[#059669]">✓</span> Add daily specials directly to cafeteria catalog
+                </div>
+              </div>
+
+              {/* 1-Click Kitchen Access CTA */}
+              <button
+                type="button"
+                onClick={() => handleKitchenLogin('Chef Suresh (Kitchen Manager)')}
+                disabled={kitchenLoading}
+                className="btn-brutal w-full py-3.5 bg-[#121316] text-[#c8ff00] hover:bg-[#252830] rounded flex items-center justify-center gap-2 text-sm font-black shadow-[4px_4px_0px_#c8ff00]"
+                style={{ fontFamily: 'var(--font-headline)' }}
+              >
+                {kitchenLoading ? (
+                  <Spinner size={18} />
+                ) : (
+                  <>
+                    <span>👨‍🍳</span>
+                    <span>Launch Kitchen Console (1-Click)</span>
+                    <ArrowRight size={16} />
+                  </>
+                )}
+              </button>
+
+              {/* PIN / Password option */}
+              <div className="text-center">
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#5e5e62]">
+                  Station Node: Counter #2 · Floor 1 DBIT
+                </span>
+              </div>
+            </div>
+          ) : tab === 'guest' ? (
             <div className="flex flex-col gap-5">
               <div>
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-[#c8ff00] text-[#121316] border border-[#121316] mb-2">

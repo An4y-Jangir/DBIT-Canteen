@@ -119,6 +119,21 @@ export default function Navbar() {
             </AnimatePresence>
           </motion.button>
 
+          {/* Mobile Kitchen quick link */}
+          {isKitchenStaff && (
+            <button
+              onClick={() => navigate('/kitchen')}
+              className={`md:hidden flex items-center gap-1 px-2.5 py-1.5 rounded text-xs font-black uppercase tracking-wider transition-colors cursor-pointer ${
+                location.pathname === '/kitchen'
+                  ? 'bg-[#c8ff00] text-[#121316]'
+                  : 'text-white bg-white/10'
+              }`}
+              style={{ fontFamily: 'var(--font-headline)' }}
+            >
+              <ChefHat size={14} />
+            </button>
+          )}
+
           {/* Cart */}
           <button
             onClick={() => navigate('/checkout')}

@@ -10,6 +10,7 @@ import { LivePulse, Badge } from '../components/ui'
 import { ShoppingCart, Search, ArrowUpDown, Check } from 'lucide-react'
 import { formatPrice } from '../lib/utils'
 import { DEFAULT_CATEGORIES, DEFAULT_MENU_ITEMS } from '../lib/mockData'
+import { getMenuItems } from '../lib/menuService'
 
 // Fast timeout helper (races network request against 2.5s timer)
 const withTimeout = (promise, ms = 2500) =>
@@ -77,9 +78,9 @@ export default function MenuPage() {
 
   const { data: allMenuItems = DEFAULT_MENU_ITEMS } = useQuery({
     queryKey: ['menu_items_raw'],
-    queryFn: fetchMenuItems,
+    queryFn: getMenuItems,
     placeholderData: DEFAULT_MENU_ITEMS,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 15,
   })
 
   // Instant filtering and sorting

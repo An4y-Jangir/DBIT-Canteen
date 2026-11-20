@@ -44,9 +44,16 @@ export default function MenuItemCard({ item, index = 0 }) {
           <div className="absolute top-2 left-2 flex items-center gap-1">
             <DietBadge isVeg={item.is_veg} />
           </div>
-          {item.stock_count <= 10 && item.stock_count > 0 && (
+          {item.stock_count <= 10 && item.stock_count > 0 && item.is_available && (
             <div className="absolute top-2 right-2">
               <Badge color="lime">Only {item.stock_count} left</Badge>
+            </div>
+          )}
+          {(!item.is_available || item.stock_count === 0) && (
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px] flex items-center justify-center">
+              <span className="px-2.5 py-1 bg-[#ef4444] text-white text-[11px] font-black uppercase tracking-wider rounded border border-white">
+                Sold Out
+              </span>
             </div>
           )}
         </div>

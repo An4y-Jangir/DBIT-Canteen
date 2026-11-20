@@ -126,6 +126,30 @@ export const useAuthStore = create((set, get) => ({
     return { success: true, user: guestUser }
   },
 
+  loginAsKitchenStaff: async (staffName = 'Chef Suresh / Canteen Manager') => {
+    const kitchenId = 'staff-kitchen-01'
+    const kitchenUser = {
+      id: kitchenId,
+      email: 'kitchen@dbit.in',
+      isStaff: true,
+      user_metadata: { name: staffName },
+    }
+    const kitchenProfile = {
+      id: kitchenId,
+      email: 'kitchen@dbit.in',
+      full_name: staffName,
+      role: 'kitchen_staff',
+      campus_wallet_balance: 9999.0,
+    }
+
+    localStorage.setItem(
+      'byte-canteen-guest',
+      JSON.stringify({ user: kitchenUser, profile: kitchenProfile })
+    )
+    set({ user: kitchenUser, profile: kitchenProfile })
+    return { success: true, user: kitchenUser }
+  },
+
   signOut: async () => {
     localStorage.removeItem('byte-canteen-guest')
     if (isSupabaseConfigured) {

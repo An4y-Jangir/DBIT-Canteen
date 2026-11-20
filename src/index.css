@@ -5,13 +5,6 @@
 
 :root {
   --color-surface: #faf9f4;
-  --color-obsidian: #121316;
-  --color-cyber-lime: #c8ff00;
-  --color-cobalt: #3b5bdb;
-}
-
-@theme {
-  --color-surface: #faf9f4;
   --color-surface-dim: #dbdad5;
   --color-surface-bright: #faf9f4;
   --color-surface-container-lowest: #ffffff;
@@ -21,33 +14,15 @@
   --color-surface-container-highest: #e3e3de;
   --color-on-surface: #1b1c19;
   --color-on-surface-variant: #434933;
-  --color-inverse-surface: #30312e;
-  --color-inverse-on-surface: #f2f1ec;
-  --color-outline: #747a60;
-  --color-outline-variant: #c4caac;
-  --color-primary: #4f6600;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #c8ff00;
-  --color-on-primary-container: #597300;
-  --color-inverse-primary: #a8d700;
-  --color-primary-fixed: #c0f500;
-  --color-primary-fixed-dim: #a8d700;
-  --color-secondary: #2d4fcf;
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: #4b69ea;
-  --color-on-secondary-container: #fffbff;
-  --color-tertiary: #5e5e62;
-  --color-on-tertiary: #ffffff;
-  --color-background: #faf9f4;
-  --color-on-background: #1b1c19;
-  --color-surface-variant: #e3e3de;
-  --color-error: #ba1a1a;
-  --color-on-error: #ffffff;
-  --color-error-container: #ffdad6;
+  --color-card-bg: #ffffff;
+  --color-card-border: #121316;
+  --color-card-shadow: #121316;
+  --color-toolbar-bg: #efeee9;
+  --color-text-dim: #747a60;
+  --color-text-title: #121316;
   --color-obsidian: #121316;
   --color-cyber-lime: #c8ff00;
   --color-cobalt: #3b5bdb;
-  --color-oat: #f6f5f0;
   --color-veg: #059669;
   --color-non-veg: #dc2626;
   --color-pending: #f59e0b;
@@ -61,6 +36,28 @@
   --shadow-brutal-sm: 2px 2px 0px #121316;
 }
 
+html.dark {
+  --color-surface: #0e0f12;
+  --color-surface-dim: #15161b;
+  --color-surface-bright: #1c1d24;
+  --color-surface-container-lowest: #14151a;
+  --color-surface-container-low: #121316;
+  --color-surface-container: #18191f;
+  --color-surface-container-high: #23252d;
+  --color-surface-container-highest: #2d2f38;
+  --color-on-surface: #f5f4ef;
+  --color-on-surface-variant: #b2b69e;
+  --color-card-bg: #15161c;
+  --color-card-border: #383a46;
+  --color-card-shadow: #000000;
+  --color-toolbar-bg: #18191f;
+  --color-text-dim: #9aa085;
+  --color-text-title: #f6f5f0;
+  --shadow-brutal: 4px 4px 0px #000000;
+  --shadow-brutal-hover: 6px 6px 0px #000000;
+  --shadow-brutal-active: 1px 1px 0px #000000;
+}
+
 body {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
@@ -68,16 +65,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--color-surface-container); }
-::-webkit-scrollbar-thumb { background: var(--color-outline-variant); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--color-text-dim); border-radius: 3px; }
 
 .brutal-card {
-  border: 1.5px solid var(--color-obsidian);
+  background-color: var(--color-card-bg);
+  border: 1.5px solid var(--color-card-border);
   box-shadow: var(--shadow-brutal);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
 }
 .brutal-card:hover {
   transform: translate(-2px, -2px);
@@ -85,7 +84,7 @@ body {
 }
 
 .btn-brutal {
-  border: 1.5px solid var(--color-obsidian);
+  border: 1.5px solid var(--color-card-border);
   box-shadow: var(--shadow-brutal);
   transition: transform 0.1s ease, box-shadow 0.1s ease;
   cursor: pointer;

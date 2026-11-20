@@ -1,9 +1,11 @@
 import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { ShoppingCart, ChefHat, LogOut, Menu } from 'lucide-react'
+import { motion, AnimatePresence } from 'motion/react'
+import { ShoppingCart, ChefHat, LogOut } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
 import { useCartStore } from '../store/cartStore'
-import { Button, LivePulse } from './ui'
+import { useTheme } from '../context/ThemeContext'
+import { LivePulse } from './ui'
 import toast from 'react-hot-toast'
 
 export default function Navbar() {
@@ -14,6 +16,7 @@ export default function Navbar() {
   const isKitchenStaff = useAuthStore((s) => s.isKitchenStaff)()
   const items = useCartStore((s) => s.items)
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0)
+  const { theme, toggleTheme, animating } = useTheme()
 
   const handleSignOut = async () => {
     await signOut()
@@ -23,14 +26,17 @@ export default function Navbar() {
 
   return (
     <header
-      style={{ borderBottom: '1.5px solid #121316', background: '#121316' }}
-      className="sticky top-0 z-50"
+      style={{
+        borderBottom: '1.5px solid var(--color-card-border, #121316)',
+        background: '#121316',
+      }}
+      className="sticky top-0 z-50 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
         {/* Logo */}
         <button
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2 group cursor-pointer"
         >
           <span
             className="font-black text-lg uppercase tracking-tight"
@@ -45,7 +51,11 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-1">
           <button
             onClick={() => navigate('/')}
-            className={`px-3 py-1.5 rounded text-xs font-black uppercase tracking-widest transition-colors ${location.pathname === '/' ? 'bg-[#c8ff00] text-[#121316]' : 'text-white hover:bg-white/10'}`}
+            className={`px-3 py-1.5 rounded text-xs font-black uppercase tracking-widest transition-colors cursor-pointer ${
+              location.pathname === '/'
+                ? 'bg-[#c8ff00] text-[#121316]'
+                : 'text-white hover:bg-white/10'
+            }`}
             style={{ fontFamily: 'var(--font-headline)' }}
           >
             Menu
@@ -53,7 +63,11 @@ export default function Navbar() {
           {isKitchenStaff && (
             <button
               onClick={() => navigate('/kitchen')}
-              className={`flex items-center gap-1 px-3 py-1.5 rounded text-xs font-black uppercase tracking-widest transition-colors ${location.pathname === '/kitchen' ? 'bg-[#c8ff00] text-[#121316]' : 'text-white hover:bg-white/10'}`}
+              className={`flex items-center gap-1 px-3 py-1.5 rounded text-xs font-black uppercase tracking-widest transition-colors cursor-pointer ${
+                location.pathname === '/kitchen'
+                  ? 'bg-[#c8ff00] text-[#121316]'
+                  : 'text-white hover:bg-white/10'
+              }`}
               style={{ fontFamily: 'var(--font-headline)' }}
             >
               <ChefHat size={14} /> Kitchen
@@ -62,11 +76,53 @@ export default function Navbar() {
         </nav>
 
         {/* Right actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Interactive Moon / Sun Liquid Flow Button */}
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.88 }}
+            onClick={toggleTheme}
+            disabled={animating}
+            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            className="btn-brutal relative p-2 bg-[#1c1d24] hover:bg-[#282a34] rounded flex items-center justify-center transition-all cursor-pointer overflow-hidden"
+            style={{
+              border: '1.5px solid #383a46',
+              boxShadow: '2px 2px 0px #000000',
+              width: 36,
+              height: 36,
+            }}
+          >
+            <AnimatePresence mode="wait">
+              {theme === 'dark' ? (
+                <motion.span
+                  key="sun-icon"
+                  initial={{ rotate: -90, scale: 0 }}
+                  animate={{ rotate: 0, scale: 1 }}
+                  exit={{ rotate: 90, scale: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-base leading-none select-none"
+                >
+                  ☀️
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="moon-icon"
+                  initial={{ rotate: 90, scale: 0 }}
+                  animate={{ rotate: 0, scale: 1 }}
+                  exit={{ rotate: -90, scale: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-base leading-none select-none"
+                >
+                  🌙
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </motion.button>
+
           {/* Cart */}
           <button
             onClick={() => navigate('/checkout')}
-            className="relative flex items-center gap-2 btn-brutal px-3 py-1.5 bg-[#c8ff00] text-[#121316] rounded text-xs"
+            className="relative flex items-center gap-2 btn-brutal px-3 py-1.5 bg-[#c8ff00] text-[#121316] rounded text-xs cursor-pointer"
             style={{ fontFamily: 'var(--font-headline)' }}
           >
             <ShoppingCart size={16} />
@@ -87,7 +143,7 @@ export default function Navbar() {
               <button
                 onClick={handleSignOut}
                 title="Sign out"
-                className="p-1.5 rounded text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-1.5 rounded text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
               >
                 <LogOut size={15} />
               </button>

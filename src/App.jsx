@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { useAuthStore } from './store/authStore'
-import { isSupabaseConfigured } from './lib/supabase'
+import { ThemeProvider } from './context/ThemeContext'
 
 import LoginPage from './pages/LoginPage'
 import MenuPage from './pages/MenuPage'
@@ -39,11 +39,15 @@ class ErrorBoundary extends Component {
       return (
         <div
           className="min-h-screen flex flex-col items-center justify-center p-6 text-center"
-          style={{ background: '#faf9f4', color: '#121316' }}
+          style={{ background: 'var(--color-surface)', color: 'var(--color-on-surface)' }}
         >
           <div
-            className="max-w-md w-full bg-white p-6 rounded-lg"
-            style={{ border: '1.5px solid #121316', boxShadow: '6px 6px 0px #121316' }}
+            className="max-w-md w-full p-6 rounded-lg brutal-card"
+            style={{
+              background: 'var(--color-card-bg)',
+              border: '1.5px solid var(--color-card-border)',
+              boxShadow: '6px 6px 0px var(--color-card-shadow)',
+            }}
           >
             <span className="text-4xl mb-3 block">⚠️</span>
             <h1
@@ -111,61 +115,63 @@ export default function App() {
 
   return (
     <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute>
-                  <MenuPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/checkout"
-              element={
-                <ProtectedRoute>
-                  <CheckoutPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/order/:orderId"
-              element={
-                <ProtectedRoute>
-                  <OrderTrackerPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/kitchen"
-              element={
-                <KitchenRoute>
-                  <KitchenDashboard />
-                </KitchenRoute>
-              }
-            />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </BrowserRouter>
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            style: {
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontSize: '13px',
-              fontWeight: '700',
-              border: '1.5px solid #121316',
-              boxShadow: '4px 4px 0px #121316',
-              borderRadius: '4px',
-              background: '#ffffff',
-              color: '#121316',
-            },
-          }}
-        />
-      </QueryClientProvider>
+      <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <MenuPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <ProtectedRoute>
+                    <CheckoutPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/order/:orderId"
+                element={
+                  <ProtectedRoute>
+                    <OrderTrackerPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/kitchen"
+                element={
+                  <KitchenRoute>
+                    <KitchenDashboard />
+                  </KitchenRoute>
+                }
+              />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </BrowserRouter>
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              style: {
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: '13px',
+                fontWeight: '700',
+                border: '1.5px solid var(--color-card-border, #121316)',
+                boxShadow: '4px 4px 0px var(--color-card-shadow, #121316)',
+                borderRadius: '4px',
+                background: 'var(--color-card-bg, #ffffff)',
+                color: 'var(--color-on-surface, #121316)',
+              },
+            }}
+          />
+        </QueryClientProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   )
 }

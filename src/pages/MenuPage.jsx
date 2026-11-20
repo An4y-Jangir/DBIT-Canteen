@@ -1,66 +1,55 @@
 import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { supabase } from '../lib/supabase'
+import { supabase, isSupabaseConfigured } from '../lib/supabase'
 import { useCartStore } from '../store/cartStore'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import MenuItemCard from '../components/MenuItemCard'
-import { LivePulse, Badge, Spinner } from '../components/ui'
+import { LivePulse, Badge } from '../components/ui'
 import { ShoppingCart, Search } from 'lucide-react'
 import { formatPrice } from '../lib/utils'
 import { DEFAULT_CATEGORIES, DEFAULT_MENU_ITEMS } from '../lib/mockData'
 
+// Fast timeout helper (races network request against 2.5s timer)
+const withTimeout = (promise, ms = 2500) =>
+  Promise.race([
+    promise,
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('Network timeout')), ms)
+    ),
+  ])
+
 const fetchCategories = async () => {
+  if (!isSupabaseConfigured) return DEFAULT_CATEGORIES
   try {
-    const { data, error } = await supabase
-      .from('categories')
-      .select('*')
-      .eq('is_active', true)
-      .order('sort_order')
-    if (error || !data || data.length === 0) return DEFAULT_CATEGORIES
-    return data
-  } catch {
-    return DEFAULT_CATEGORIES
-  }
-}
-
-const fetchMenuItems = async (activeCategory, search, catData) => {
-  try {
-    let q = supabase
-      .from('menu_items')
-      .select('*, category:categories(name, slug)')
-      .order('sort_order')
-
-    if (activeCategory !== 'all') {
-      const cat = catData?.find((c) => c.slug === activeCategory)
-      if (cat?.id && !cat.id.startsWith('cat-')) {
-        q = q.eq('category_id', cat.id)
-      }
-    }
-    if (search) q = q.ilike('name', `%${search}%`)
-
-    const { data, error } = await q
+    const { data, error } = await withTimeout(
+      supabase
+        .from('categories')
+        .select('*')
+        .eq('is_active', true)
+        .order('sort_order')
+    )
     if (!error && data && data.length > 0) return data
   } catch (err) {
-    console.warn('Supabase menu fetch fallback:', err)
+    console.warn('Categories fast-fallback:', err?.message)
   }
+  return DEFAULT_CATEGORIES
+}
 
-  // Fallback to rich mock data
-  let fallback = DEFAULT_MENU_ITEMS
-  if (activeCategory !== 'all') {
-    fallback = fallback.filter(
-      (item) => item.category?.slug === activeCategory || item.category_id === `cat-${activeCategory}`
+const fetchMenuItems = async () => {
+  if (!isSupabaseConfigured) return DEFAULT_MENU_ITEMS
+  try {
+    const { data, error } = await withTimeout(
+      supabase
+        .from('menu_items')
+        .select('*, category:categories(name, slug)')
+        .order('sort_order')
     )
+    if (!error && data && data.length > 0) return data
+  } catch (err) {
+    console.warn('Menu fast-fallback:', err?.message)
   }
-  if (search) {
-    const s = search.toLowerCase()
-    fallback = fallback.filter(
-      (item) =>
-        item.name.toLowerCase().includes(s) ||
-        (item.description && item.description.toLowerCase().includes(s))
-    )
-  }
-  return fallback
+  return DEFAULT_MENU_ITEMS
 }
 
 export default function MenuPage() {
@@ -68,14 +57,38 @@ export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [search, setSearch] = useState('')
 
-  const { data: catData } = useQuery({
+  // Instant render with placeholderData (0ms first paint!)
+  const { data: categories = DEFAULT_CATEGORIES } = useQuery({
     queryKey: ['categories'],
     queryFn: fetchCategories,
+    placeholderData: DEFAULT_CATEGORIES,
+    staleTime: 1000 * 60 * 5, // 5 min cache
   })
 
-  const { data: menuData, isLoading } = useQuery({
-    queryKey: ['menu', activeCategory, search, catData],
-    queryFn: () => fetchMenuItems(activeCategory, search, catData),
+  const { data: allMenuItems = DEFAULT_MENU_ITEMS } = useQuery({
+    queryKey: ['menu_items_raw'],
+    queryFn: fetchMenuItems,
+    placeholderData: DEFAULT_MENU_ITEMS,
+    staleTime: 1000 * 60 * 5, // 5 min cache
+  })
+
+  // Instant client-side filtering (0ms lag when clicking category pills or typing search)
+  const filteredItems = (allMenuItems || DEFAULT_MENU_ITEMS).filter((item) => {
+    // 1. Category match
+    const matchesCategory =
+      activeCategory === 'all' ||
+      item.category?.slug === activeCategory ||
+      item.category_id === `cat-${activeCategory}`
+
+    if (!matchesCategory) return false
+
+    // 2. Search match
+    if (!search.trim()) return true
+    const term = search.toLowerCase()
+    return (
+      item.name.toLowerCase().includes(term) ||
+      (item.description && item.description.toLowerCase().includes(term))
+    )
   })
 
   const items = useCartStore((s) => s.items)
@@ -92,7 +105,10 @@ export default function MenuPage() {
           {/* Page header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
-              <h1 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3" style={{ fontFamily: 'var(--font-headline)' }}>
+              <h1
+                className="text-2xl font-black uppercase tracking-tight flex items-center gap-3"
+                style={{ fontFamily: 'var(--font-headline)' }}
+              >
                 Live Menu <LivePulse label="Kitchen Open" color="#c8ff00" />
               </h1>
               <p className="text-sm mt-0.5" style={{ color: 'var(--color-on-surface-variant)' }}>
@@ -102,7 +118,11 @@ export default function MenuPage() {
 
             {/* Search */}
             <div className="relative flex items-center w-full sm:w-72">
-              <Search size={15} className="absolute left-3" style={{ color: 'var(--color-on-surface-variant)' }} />
+              <Search
+                size={15}
+                className="absolute left-3"
+                style={{ color: 'var(--color-on-surface-variant)' }}
+              />
               <input
                 type="text"
                 value={search}
@@ -120,7 +140,7 @@ export default function MenuPage() {
 
           {/* Category filter chips */}
           <div className="flex gap-2 overflow-x-auto pb-2 mb-6 no-scrollbar">
-            {(catData ?? DEFAULT_CATEGORIES).map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat.slug}
                 onClick={() => setActiveCategory(cat.slug)}
@@ -138,17 +158,16 @@ export default function MenuPage() {
             ))}
           </div>
 
-          {/* Grid */}
-          {isLoading ? (
-            <div className="flex justify-center py-20">
-              <Spinner size={36} />
-            </div>
-          ) : menuData?.length === 0 ? (
+          {/* Menu Items Grid */}
+          {filteredItems.length === 0 ? (
             <div className="text-center py-20 text-[#747a60]">
               <p className="text-4xl mb-3">🍽️</p>
-              <p className="font-headline text-lg uppercase font-bold">No items found</p>
+              <p className="font-headline text-lg uppercase font-bold">No dishes found</p>
               <button
-                onClick={() => { setActiveCategory('all'); setSearch('') }}
+                onClick={() => {
+                  setActiveCategory('all')
+                  setSearch('')
+                }}
                 className="mt-3 btn-brutal px-4 py-2 bg-[#c8ff00] text-[#121316] text-xs font-black rounded"
                 style={{ fontFamily: 'var(--font-headline)' }}
               >
@@ -157,7 +176,7 @@ export default function MenuPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {menuData?.map((item) => (
+              {filteredItems.map((item) => (
                 <MenuItemCard key={item.id} item={item} />
               ))}
             </div>
@@ -169,7 +188,10 @@ export default function MenuPage() {
           <aside className="hidden lg:flex flex-col w-72 flex-shrink-0">
             <div className="sticky top-20 brutal-card bg-white rounded-lg p-4 flex flex-col gap-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-black uppercase tracking-widest" style={{ fontFamily: 'var(--font-headline)' }}>
+                <span
+                  className="text-sm font-black uppercase tracking-widest"
+                  style={{ fontFamily: 'var(--font-headline)' }}
+                >
                   Your Order
                 </span>
                 <Badge color="cobalt">{totalItems} items</Badge>
@@ -179,7 +201,10 @@ export default function MenuPage() {
                   <div key={item.id} className="py-2 flex items-center justify-between gap-2">
                     <span className="text-xs flex-1 truncate">{item.name}</span>
                     <span className="text-xs text-[#747a60]">×{item.quantity}</span>
-                    <span className="text-xs font-bold" style={{ fontFamily: 'var(--font-headline)' }}>
+                    <span
+                      className="text-xs font-bold"
+                      style={{ fontFamily: 'var(--font-headline)' }}
+                    >
                       {formatPrice(item.price * item.quantity)}
                     </span>
                   </div>
@@ -189,8 +214,16 @@ export default function MenuPage() {
                 className="flex items-center justify-between pt-2"
                 style={{ borderTop: '1.5px solid #121316' }}
               >
-                <span className="text-sm font-black uppercase" style={{ fontFamily: 'var(--font-headline)' }}>Total</span>
-                <span className="text-lg font-black" style={{ fontFamily: 'var(--font-headline)', color: 'var(--color-primary)' }}>
+                <span
+                  className="text-sm font-black uppercase"
+                  style={{ fontFamily: 'var(--font-headline)' }}
+                >
+                  Total
+                </span>
+                <span
+                  className="text-lg font-black"
+                  style={{ fontFamily: 'var(--font-headline)', color: 'var(--color-primary)' }}
+                >
                   {formatPrice(totalPrice)}
                 </span>
               </div>
@@ -208,7 +241,10 @@ export default function MenuPage() {
 
       {/* Mobile sticky checkout bar */}
       {totalItems > 0 && (
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 z-40" style={{ background: 'var(--color-surface)' }}>
+        <div
+          className="lg:hidden fixed bottom-0 left-0 right-0 p-4 z-40"
+          style={{ background: 'var(--color-surface)' }}
+        >
           <button
             onClick={() => navigate('/checkout')}
             className="btn-brutal w-full py-3.5 bg-[#c8ff00] text-[#121316] rounded text-sm flex items-center justify-between px-4"
